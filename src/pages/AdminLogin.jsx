@@ -1,9 +1,12 @@
 import React from 'react'
 import Logo from '../assets/img/header/logoJ.png'
 import '../style/form.css'
-
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 const AdminLogin = () => {
     return (
+        <>
+        <Header/>
         <main>
             <div className="boxlogin">
                 <div className="inner-box">
@@ -65,6 +68,9 @@ const AdminLogin = () => {
                 </div>
             </div>
         </main>
+        <Footer/>
+        </>
+       
     )
 }
 

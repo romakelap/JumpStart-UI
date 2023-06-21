@@ -60,6 +60,15 @@ li {
     cursor: pointer;
     color: var(--whiteColor);
 }
+.btnorder{
+    padding: .7rem 1.5rem;
+    background:  #458D5F;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    color: var(--whiteColor);
+}
 .btn2 {
     padding: .4rem 1rem;
     background: rgb(219, 184, 8);

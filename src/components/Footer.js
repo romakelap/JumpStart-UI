@@ -11,11 +11,11 @@ const Footer = () => {
       <div className='flex flex-col items-center text-center lg:flex-row 
       lg:items-start lg:text-left lg:justify-between gap-y-8'>
         {/* LOGO */}
-        <div data-aos='fade-up' data-aos-offset='200' data-aos-delay='300'>
+        <div data-aos='fade-up'  data-aos-duration='300'>
           <img src={logo}></img>
         </div>
         {/* List 1 */}
-        <div data-aos='fade-up' data-aos-offset='200' data-aos-delay='400'>
+        <div data-aos='fade-up'  data-aos-duration='400'>
           <div className='text-2xl uppercase font-medium'>Links</div>
           <ul className='flex flex-col gap-y-3'>
             {
@@ -35,7 +35,7 @@ const Footer = () => {
         </div>
 
          {/* List 2 */}
-         <div data-aos='fade-up' data-aos-offset='200' data-aos-delay='500'>
+         <div data-aos='fade-up'  data-aos-duration='500'>
           <div className='text-2xl uppercase font-medium'>Legal</div>
           <ul className='flex flex-col gap-y-3'>
             {
@@ -55,7 +55,7 @@ const Footer = () => {
         </div>
 
         {/* NewsLetter */}
-        <div data-aos='fade-up' data-aos-offset='200' data-aos-delay='600'>
+        <div data-aos='fade-up' data-aos-duration='600'>
           <div className='text-2xl uppercase font-medium mb-6'>{newsletter.title}</div>
           <div className='text-xl text-light mb-[18px]'>{newsletter.subtitle}</div>
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { MdOutlineHealthAndSafety } from 'react-icons/md'
 import '../style/detailProduct.css'
-import banner from '../assets/productj.png'
+import banner from '../assets/laptop.jpg'
 
 const ProductDetailComp = () => {
   return (
@@ -16,8 +16,7 @@ const ProductDetailComp = () => {
             <h1>Kacamata</h1>
             <p className="text-yellow-500">$110</p>
             <div className="options">
-              <button className="btn btn-success">Order</button>
-              
+              <button className="btnorder bg-green-500">Order</button> 
             </div>
           </div>
           <div className="description">

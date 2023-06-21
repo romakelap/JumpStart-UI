@@ -6,6 +6,7 @@ import banner from '../assets/productj.png'
 import '../style/ProductCard.css'
 import Cta from '../components/Cta'
 import Footer from '../components/Footer'
+import { Link } from 'react-router-dom';
 
 const ProductList = () => {
   return (
@@ -20,7 +21,9 @@ const ProductList = () => {
           <img src={banner} alt="" />
           <h4>Kacamata</h4>
           <p className="text-yellow-500">$110</p>
-          <button className="btn-food text-center">More</button>
+          <Link to="/detaill">
+            <button className="btn-food text-center">More</button>
+          </Link>
         </div>
       </div>
       {/* CARD PRODUCT END */}
