@@ -1,0 +1,54 @@
+.kotak {
+    display: inline-block;
+    height: auto;
+    padding: 10px;
+    margin-left: 38px;
+    margin: 0 3 5 auto;
+    align-content: end;
+}
+
+.kotak .box-stock .btn-food {
+    width: 30%;
+    padding: 5px 0rem;
+    border-radius: 5px;
+    border: none;
+    background: white;
+    color: #0c0c0c;
+    font-size: .875rem;
+    font-weight: 600;
+    border: 1px solid #616161;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.kotak .box-stock p {
+    margin-bottom: 15px;
+    margin-top: -15px;
+}
+
+.kotak .box-stock a.btn-food {
+    text-decoration: none;
+}
+
+.box-stock {
+    width: 260px;
+    display: inline-block;
+    height: auto;
+    border-radius: 10px;
+    background: white;
+    padding: 10px;
+    margin-left: 10px;
+    margin: 0 3 5 auto;
+    align-content: end;
+    margin-bottom: 30px;
+    box-shadow: 10px 5px 20px 8px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 10px 5px 20px 8px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 10px 5px 20px 8px rgba(0, 0, 0, 0.2);
+}
+
+.box-stock img {
+    width: auto;
+    border-radius: 10px;
+    height: 200px;
+}

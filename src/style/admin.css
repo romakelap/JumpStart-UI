@@ -1,0 +1,607 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --PrimaryColor:  rgb(255 114 53);
+  --SecondaryColor: hsl(180, 17%, 95%);
+  --colorOne: hsl(15, 74%, 76%);
+  --colorTwo: hsl(28, 60%, 47%);
+  --HoverColor: hsl(225, 56%, 59%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 12%);
+  --textColor: hsl(240, 1%, 48%);
+  --borderColor: hsl(e, 0%, 83%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --greyBg: hsl(0, 0%, 96%);
+  --greyText: rgb(145, 145, 145);
+  --inputColor: hsl(330, 12%, 97%);
+  --boxShadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  --transition: .4s ease-in-out;
+  --colorfooter: #3C4E55;
+
+
+  --color-info-dark: #7d8da1;
+  --color-info-light: #dce1eb;
+  --color-dark: #363949;
+  --color-light: rgba(132, 139, 200, 0.491);
+  --konol: #111e88;
+
+  --card-border-radius: 2rem;
+  --border-radius-1: o.4rem;
+  --border-radius-2: 0.8rem;
+  --border-radius-3: 1.2rem;
+
+  --card-padding: 1.8rem;
+  --padding-1: 1.2rem;
+
+  --box-shadow: 1rem 2rem 3rem var(--color-light);
+}
+
+/* body ada overflow-x hidden */
+.adminbody {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  appearance: none;
+  box-sizing: border-box;
+  background-color: #f6f6f9;
+  /* user-select: none; */
+}
+
+small {
+  font-size: 0.75rem;
+}
+
+.containerAdmin {
+  display: grid;
+  width: 96%;
+  margin: 0 auto;
+  gap: 1.8rem;
+  grid-template-columns: 14rem auto 23rem;
+  background: rgb(255, 255, 255);
+
+}
+
+.sidebar a h3 {
+  font-size: 0.88rem;
+  color: #363949;
+
+}
+
+.top .logoAdmin img {
+  display: block;
+  width: 100%;
+  height: 2rem;
+  width: 9rem;
+}
+
+small {
+  font-size: 0.75rem;
+}
+
+.profile-photo {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.text-muted {
+  color: var(--color-info-dark);
+}
+
+.primary {
+  color: var(--PrimaryColor);
+}
+
+aside {
+  height: 100vh;
+  background: white;
+  /* box-shadow: 0 1rem 1rem var(--color-light); */
+}
+
+aside .top {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.4rem;
+}
+
+aside .logoAdmin {
+  display: flex;
+  gap: 0.8rem;
+}
+
+aside .close {
+  display: none;
+}
+
+
+/* ============SIDE BAR================ */
+
+aside .sidebar {
+  background:white ;
+  display: flex;
+  flex-direction: column;
+  height: 86vh;
+  position: relative;
+  top: 3rem;
+}
+
+.sidebar h3 {
+  font-weight: 700;
+}
+
+aside a {
+  display: flex;
+  margin-left: 2rem;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  height: 3.7rem;
+  transition: all 300ms ease;
+}
+
+aside .sidebar a {
+  position: relative;
+}
+
+.sidebar a:last-child {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+}
+
+.sidebar a.active {
+  background: rgba(255, 114, 53, 0.283);
+  color: black;
+  margin-left: 0;
+}
+
+.sidebar a.active h3 {
+  color: var(--PrimaryColor);
+}
+
+.sidebar a.active:before {
+  content: "";
+  width: 6px;
+  height: 100%;
+  background: var(--PrimaryColor);
+}
+
+/* ======================MAIN STYLe */
+.main {
+  margin-top: 1.4rem;
+  height: auto;
+}
+/* main .insights .sales .material-icon svg{
+  margin-top: -40px;
+} */
+
+.main h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+
+.main h2 {
+  font-size: 1.4rem;
+}
+
+.main h3 {
+  font-size: 0.87rem;
+}
+
+.main .insights {
+  margin-top: 45px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+
+
+.main .insights>div {
+  background: var(--whiteColor);
+  border: 1px solid #E4E9EF;
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  margin-top: 1rem;
+}
+a,span{
+  cursor: pointer;
+}
+.main .insights>div:hover {
+  box-shadow: none;
+}
+
+.main .insights>div span {
+  padding: -0.5rem;
+  border-radius: 50%;
+  color: black;
+  font-size: 2rem;
+}
+
+.main .insights>div .middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main .insights h3 {
+  margin: 1rem 0 0.6rem;
+  font-size: 1rem;
+}
+
+.main .insights .progress {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+}
+
+.main .insights .progress svg {
+  width: 7rem;
+  height: 7rem;
+}
+
+.main .insights .progress svg circle {
+  fill: none;
+  stroke: var(--PrimaryColor);
+  stroke-linecap: round;
+  stroke-width: 14;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 80;
+  stroke-dashoffset: 100;
+}
+.main .insights .progress .number{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .insights .sales span .svg1{
+  color: rgb(255, 255, 255);
+  background: #8454D4;
+  padding:0.5rem ;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+
+}
+.main .insights .sales span .svg2{
+  color: rgb(255, 255, 255);
+  background: #D49154;
+  padding:0.5rem ;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+
+}
+.main .insights .sales span .svg3{
+  color: rgb(255, 255, 255);
+  background: #B3596F;
+  padding:0.5rem ;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+
+}
+
+/* search style */
+.search {
+  margin-top: 3rem;
+  width: 50%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 1px solid var(--greyText);
+  border-right: none;
+  padding: 5px;
+  height: 36px;
+  border-radius: 10px 0 0 10px;
+  outline: none;
+  color: #7c7c7c;
+}
+
+.searchTerm:focus{
+  color: #000000;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #267AF9;
+  background: #267AF9;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+ 
+}
+
+.ButtonCustomer {
+  width: 100px;
+  height: 36px;
+  border: 1px solid #267AF9;
+  background: #267AF9;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 10px;
+  margin-left: 20px;
+ 
+}
+.buttonadd{
+  font-size: 10px;
+  width: 100px;
+  height: 36px;
+  border: 1px solid #4ADB7E;
+  background: #4ADB7E;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 10px;
+  margin-left: 20px;
+ 
+}
+.searchButton  svg{
+  margin-left: 5px;
+}
+
+/* Search style end */
+
+
+/* ==================TABLE=============== */
+.main{
+  z-index: 1; 
+}
+.main .recent-list h2{
+  margin-top: 0.8rem;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  font-weight: 600;
+}
+.main .recent-list{
+  z-index: 1;
+}
+
+
+.main .recent-list  table{
+  margin-top: 25px;
+  background-color: #F4F6FF;
+  width: 100%;
+  text-align: center;
+  padding: var(--card-padding);
+  border: 2px solid #E4E9EF;
+  transform: all 300ms ease;
+}
+.main table thead th{
+  padding-top: 10px;
+}
+.main table tbody{
+  overflow: scroll;
+}
+.main table tbody td{
+  height: 2.8rem;
+  border-bottom: 1px solid var(--color-info-light);
+  color: var(--color-info-dark);
+}
+
+
+/* ====================Right=================== */
+
+.right {
+  margin-top: 1.4rem;
+  z-index: 0;
+}
+
+.right .top{
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+}
+.right .top button{
+  display: none;
+}
+.right .recent-updates h2{
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.right .top .profileAdmin{
+  display: flex;
+  gap: 1rem;
+  text-align: right;
+}
+
+.right .recent-updates{
+  /* background-color: red; */
+  margin-top: 0px;
+}
+.right .recent-updates h2{
+  margin-bottom: 0.8rem;
+}
+.right .recent-updates .updates{
+  padding: var(--card-padding);
+  border-radius:20px;
+  border: 1px solid #E4E9EF;
+}
+.right .recent-updates .updates:hover{
+  box-shadow: none;
+}
+
+.right .recent-updates .updates .update{
+  display: flex;
+  grid-template-columns: 2.6rem auto;
+  gap: 1rem;
+}
+
+/* =========TAB PANNEL============ */
+/* .tab-control h2:hover{
+  color: red;
+}
+.tab-panel{
+  display: none;
+}
+input[type=radio]:checked+.tab-control h2{
+  font-weight: 800;
+  color: red;
+}
+#tab-1:checked~.tab-content>.tab-panel-1{
+  display: block;
+} */
+
+/* ==========================MEDIA QUERY=========== */
+
+@media screen and (max-width:1200px) {
+  .containerAdmin{
+    /* color: red; */
+    width: 94%;
+    grid-template-columns: 7rem auto 23rem;
+  }
+
+  aside .sidebar h3{
+    display: none;
+  }
+  aside .sidebar a{
+    width: 5.6rem;
+  }
+  aside .sidebar a:last-child{
+    position: relative;
+    margin-top: 1.8rem;
+  }
+  .main .insights{
+    grid-template-columns: 1fr ;
+    gap: 0;
+  }
+  .main .recent-list{
+    width: 94%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 2rem 0 0 8.8rem;
+  }
+  .main .recent-list table{
+    width: 83vh;
+  }
+  .main table thead tr th:last-child,
+  .main table thead tr th:first-child{
+    display: none;
+  }
+  .main table tbody tr td:last-child,
+  .main table tbody tr td:first-child{
+    display: none;
+  }
+  .searchTerm {
+    width: 100%;
+  }
+  
+}
+
+/* ===========MEDIA PHONE ================== */
+@media screen and (max-width:768px){
+  .containerAdmin{
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+  .searchTerm {
+    width: 100%;
+  }
+  aside{
+    position: fixed;
+    left: 0;
+    width: 18rem;
+    z-index: 3;
+    box-shadow: 1rem 3rem 4 rem var(--color-light);
+    height: 100vh;
+    padding-right: var(--card-padding) ;
+    display: none;
+  }
+
+  aside .logoAdmin{
+    margin-left: 1rem;
+  }
+
+  aside .sidebar h3{
+    display: inline;
+  }
+
+  aside .sidebar a{
+    width: 100%;
+    height: 3.4rem;
+  }
+
+  aside .sidebar a:last-child{
+    position: absolute;
+    bottom: 5rem;
+  }
+  aside .close{
+    display: inline-block;
+    cursor: pointer;
+  }
+  .main{
+    margin-top: 8rem;
+    padding: 0 1rem;
+  }
+
+  .main .recent-list{
+    position: relative;
+    margin: 3rem 0 0 0;
+    width: 100%;
+  }
+  .main .recent-list table{
+    width: 100%;
+    margin: 0;
+  }
+  .right{
+    width: 94%;
+    margin: 0 auto 4rem;
+  }
+  .right .top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    padding: 0 0.8rem;
+    height: 4.6rem;
+    width: 100%;
+    margin: 0;
+    z-index: 2;
+    box-shadow: 0 1rem 1rem var(--color-light);
+  }
+
+  .right .profileAdmin .infoAdmin{
+    display: none;
+  }
+
+  .right .top button{
+    display: inline;
+    background: transparent;
+    cursor: pointer;
+    color: var(--color-dark);
+    position: absolute;
+    left: 1rem;
+
+  }
+
+  .right .top button span{
+    font-size: 2rem;
+  }
+  .right .recent-updates{
+    /* background-color: red; */
+    margin-top: -10px;
+  }
+}

@@ -1,0 +1,917 @@
+/* import font */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Spartan:wght@300;400;500&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* font-family: 'Spartan', sans-serif; */
+}
+
+:root {
+    --PrimaryColor: rgb(255 114 53);
+    --SecondaryColor: hsl(180, 17%, 95%);
+    --colorOne: hsl(15, 74%, 76%);
+    --colorTwo: hsl(28, 60%, 47%);
+    --HoverColor: hsl(225, 56%, 59%);
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(0, 0%, 12%);
+    --textColor: hsl(240, 1%, 48%);
+    --borderColor: hsl(e, 0%, 83%);
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --greyBg: hsl(0, 0%, 96%);
+    --greyText: rgb(145, 145, 145);
+    --inputColor: hsl(330, 12%, 97%);
+    --boxShadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    --transition: .4s ease-in-out;
+    --colorfooter: #3C4E55;
+}
+
+body {
+    background: var(--whiteColor);
+}
+
+a {
+    text-decoration: none;
+    color: var(--textColor);
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
+}
+
+.section {
+    padding: 4rem 0 2rem;
+}
+
+.container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+
+.btn {
+    padding: .7rem 1.5rem;
+    background: var(--PrimaryColor);
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    color: var(--whiteColor);
+}
+.btn2 {
+    padding: .4rem 1rem;
+    background: rgb(219, 184, 8);
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    color: var(--whiteColor);
+    margin-left: 5px;
+}
+
+.btnTwo {
+    border: 2px solid black;
+    background: transparent;
+    padding: .7rem 1rem;
+    color: var(--PrimaryColor);
+    cursor: pointer;
+    border-color: var(--PrimaryColor);
+    border-radius: 0.5rem;
+
+}
+
+.btnoutThree {
+    border: 2px solid black;
+    background-color: var(--SecondaryColor);
+    padding: .7rem 1rem;
+    color: var(--PrimaryColor);
+    cursor: pointer;
+    border-color: var(--PrimaryColor);
+    border-radius: 0.5rem;
+}
+
+.btn a {
+    color: var(--whiteColor);
+    font-weight: 500;
+}
+
+/* .btn:hover {
+    background: var(--HoverColor);
+} */
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+input {
+    font-size: 100%;
+    color: var(--greyText);
+}
+
+p {
+    font-size: 13px;
+    color: var(--greyText);
+    line-height: 22px;
+}
+
+h4 {
+    padding: 1rem 0;
+    font-weight: 700;
+    color: var(--blackColor);
+}
+
+h2 {
+    font-size: 25px;
+    padding: 1rem 0;
+    color: var(--blackColor);
+}
+
+
+/* navBar section styling ========================================= */
+.navBar {
+    position: fixed;
+    flex-direction: column;
+    width: 100%;
+    z-index: 1000;
+
+}
+
+.navBar .navBarOne,
+.navBartTwo {
+    justify-content: space-between;
+    padding: 1rem;
+    width: 100%;
+}
+
+.navBar .navBarOne {
+    background: var(--SecondaryColor);
+}
+
+.navBar .navBarOne .icon:hover {
+    color: var(--PrimaryColor);
+}
+
+.navBar .navBarOne .atb span {
+    color: var(--blackColor);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.navBar .navBarOne .atb span:hover {
+    color: var(--PrimaryColor);
+    font-weight: 600;
+}
+
+.navBar .navBarOne .navBartTwo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 3rem;
+    padding: 1.5rem 1rem;
+    position: fixed;
+    transition: .3s ease-in-out;
+}
+
+.navBar .navBarOne .navBartTwo .logoDiv .logo {
+    width: 20%;
+
+}
+
+.navbar_With_Bg {
+    background: var(--SecondaryColor);
+    padding: .5rem 1rem;
+    box-shadow: var(--boxShadow);
+
+}
+.menu{
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .navBarMenu {
+        margin-top: 50px;
+        position: absolute;
+        background: var(--whiteColor);
+        padding: 1.5rem;
+        border-radius: 10px;
+        top: 5rem;
+        right: -50%;
+        width: 80%;
+        transform: translateX(50%);
+        z-index: 2000;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.5) 0px 4px 6px -2px;
+        border: 3px solid var(--whiteColor);
+        transition: .4s ease-in-out;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: .5rem;
+        align-items: center;
+
+    }
+
+    .menu .listItem {
+        padding: .5rem 0;
+        cursor: pointer;
+        color: var(--blackColor);
+    }
+
+    .menu .listItem:hover {
+        color: var(--PrimaryColor);
+        font-weight: 700;
+    }
+
+    .btnOne {
+        display: block;
+        justify-content: center;
+        margin-top: 2rem;
+        margin: auto;
+    }
+
+    .btnTwo {
+        display: block;
+        justify-content: center;
+        bottom: 1rem;
+        margin: auto;
+    }
+
+    .btnoutThree {
+        display: none;
+    }
+
+    .btnThree {
+        display: none;
+    }
+
+    .toggleIcon .icon {
+        font-size: 30px;
+        color: var(--blackColor);
+    }
+
+    .showNavBar {
+        right: 50%;
+        transition: .5s ease-in-out;
+    }
+
+    .logo {
+        width: 40%;
+
+    }
+}
+
+/* HOME SECTION STYLING ================================= */
+.home {
+    padding-top: 10rem;
+    text-align: center;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.home .mainText {
+    color: var(--blackColor);
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 2.5rem;
+}
+
+.homeImages {
+    width: 100%;
+    margin: 1rem auto 0;
+    /* will change on the wider screens */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 5rem;
+}
+
+.homeImages .imageDiv {
+    width: 100%;
+    padding: 10px;
+}
+
+.homeImages .imageDiv .vimage {
+    border-radius: 2rem;
+}
+
+/* Search SECTION STYLING ================================= */
+.search .sectionContainer {
+    width: 100%;
+    padding: 1.5rem;
+    border: 2px solid var(--greyBg);
+    border-radius: 15px;
+    row-gap: 2rem;
+}
+
+.btns {
+    background: var(--SecondaryColor);
+    padding: .5rem;
+    border-radius: 1rem;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+}
+
+.search .sectionContainer .btns .singleBtn {
+    padding: .8rem 1rem;
+    font-size: 13px;
+    border-radius: 3rem;
+    width: 80%;
+    text-align: center;
+}
+
+.search .sectionContainer .btns .singleBtn:hover {
+    background: var(--PrimaryColor);
+    color: var(--whiteColor);
+    font-weight: 500;
+    transition: .4s ease;
+}
+
+.search .sectionContainer .btns .singleBtn.actice {
+    background: var(--PrimaryColor);
+    color: var(--whiteColor);
+    font-weight: 500;
+}
+
+.searchInputs .singleInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* .searchInputs .singleInputs .iconDiv{
+    padding: 16px 10px;
+    border-radius: 2rem;
+    background: var(--SecondaryColor);
+    margin-right: 1rem;
+}
+.searchInputs .singleInputs .icon{
+    color: var(--blackColor);
+    opacity: .7;
+} */
+
+.searchInputs .singleInput .texts h4 {
+    padding-top: 0;
+    padding-bottom: .7rem;
+    font-weight: 700;
+}
+
+.searchInputs .singleInput .texts input {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+/* Support section styling */
+
+.support .sectionContainer .titlesDiv {
+    text-align: center;
+}
+
+.support .sectionContainer .titlesDiv small {
+    letter-spacing: .8rem;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--blackColor);
+    line-height: 1.5rem;
+}
+
+.support .sectionContainer .infoDiv {
+    margin-top: 2rem;
+    gap: 1.5rem;
+}
+
+.support .sectionContainer .infoDiv .textDiv {
+    gap: 1.5rem;
+}
+
+.support .sectionContainer .infoDiv .textDiv .singleInfo .number {
+    background: var(--PrimaryColor);
+    padding: 5px 12px;
+    width: 40px;
+    border-radius: 3rem;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--whiteColor);
+}
+
+.support .sectionContainer .infoDiv .textDiv .singleInfo .colorOne {
+    background: var(--colorOne);
+}
+
+.support .sectionContainer .infoDiv .textDiv .singleInfo .colorTwo {
+    background: var(--colorTwo);
+}
+
+.support .sectionContainer .infoDiv .textDiv .imgDiv {
+    margin: auto;
+}
+
+.support .sectionContainer .infoDiv .textDiv .imgDiv img {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Info sectioon styling */
+.info {
+    background: var(--PrimaryColor);
+}
+
+.info .infoContainer .tittleDev {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    justify-content: space-between;
+}
+
+.info .infoContainer .cardsDiv {
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.info .infoContainer .cardsDiv .singleCard {
+    background: var(--whiteColor);
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    gap: 1rem;
+    text-align: center;
+    margin: auto;
+    height: 320px;
+    width: 90%;
+    max-width: 250px;
+}
+
+.info .infoContainer .cardsDiv .singleCard .iconDiv {
+    justify-content: center;
+    margin: auto;
+    background: var(--PrimaryColor);
+    width: max-content;
+    height: 55px;
+    padding: 1rem;
+    border-radius: 3rem;
+    color: var(--whiteColor);
+}
+
+.info .infoContainer .cardsDiv .singleCard .cardTitle {
+    color: var(--blackColor);
+    font-weight: 700;
+}
+
+.info .infoContainer .cardsDiv .singleCard .colorOne {
+    background: var(--colorOne);
+}
+
+.info .infoContainer .cardsDiv .singleCard .colorTwo {
+    background: var(--colorTwo);
+}
+
+
+
+/* LOUNGE section styling */
+.lounge .sectionContainer {
+    gap: 1.5rem;
+}
+
+.lounge .imgDiv {
+    margin: auto;
+}
+
+.lounge .imgDiv img {
+    width: 100%;
+    max-width: 430px;
+}
+
+.lounge .textDiv .grids {
+    margin-top: 1rem;
+    gap: 1.5rem;
+}
+
+.lounge .textDiv .grids .singleGrid .gridTitle {
+    display: block;
+    padding-bottom: .5rem;
+    font-weight: 500;
+    color: var(--blackColor);
+}
+
+
+/* Partner Section */
+
+.partner .sectionContainer {
+    text-align: center;
+}
+
+.partner .partnerContainer {
+    margin-top: 1rem;
+    gap: 1.5rem;
+}
+
+.partner .partnerContainer .singlePartner {
+    position: relative;
+    height: 320px;
+    width: 85%;
+    max-width: 250px;
+    overflow: hidden;
+    border-radius: 2rem;
+    margin: auto;
+    /* filter: brightness(50%); */
+}
+
+.partner .partnerContainer .singlePartner .partnerImage,
+.logoImage {
+
+    position: absolute;
+}
+
+.partner .partnerContainer .singlePartner .partnerImage {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    object-fit: cover;
+}
+
+.partner .partnerContainer .singlePartner .logoImage {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    bottom: 30px;
+    border-radius: 50%;
+    right: 40%;
+    border: 5px solid white;
+    animation: animated 2.3s infinite;
+}
+
+/* SUBSCRIBE  styling*/
+
+
+.subscribe .sectionContainer {
+    text-align: center;
+
+}
+
+.subscribe .sectionContainer h2 {
+    color: var(--whiteColor);
+    font-weight: 500;
+}
+
+.subscribe .sectionContainer .inputDiv {
+    margin-top: 1rem;
+    flex-direction: column;
+    background: var(--whiteColor);
+    border-radius: 1rem;
+}
+
+.subscribe .sectionContainer .inputDiv input {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 1rem .5rem;
+}
+
+.subscribe .sectionContainer .inputDiv input:placeholder {
+    font-size: 13px;
+    opacity: .5;
+}
+
+.subscribe .sectionContainer .inputDiv .btn {
+    width: 100%;
+}
+
+
+/* MEDIA SCREEN STYLING ================================== */
+@media screen and (min-width:480px) {
+
+    /* Home section */
+    .home {
+        padding-top: 12rem;
+    }
+    /* Partner section */
+    .partner .partnerContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* subcribe section */
+    .subscribe .sectionContainer {
+        max-width: 80%;
+        margin: auto;
+    }
+
+    .subscribe .sectionContainer .inputDiv {
+        flex-direction: row;
+        padding: 0 .5rem;
+        border-radius: 2rem;
+    }
+
+
+
+}
+
+@media screen and (min-width:570px) {
+
+    /* Home sedction */
+    .home .mainText {
+        width: 80%;
+    }
+
+    .home .homeImages .vimage {
+        border-radius: 2.5rem;
+    }
+
+    /* Support section */
+    .support .sectionContainer .infoDiv .textDiv {
+        margin-top: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Info Section */
+    .info .infoContainer .tittleDiv {
+        flex-direction: row;
+    }
+
+    .info .infoContainer .tittleDiv h2 {
+        text-align: center;
+        max-width: 500px;
+    }
+
+    .info .infoContainer .cardsDiv {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Lounge section */
+    .lounge .sectionContainer .textDiv .grids {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* subcribe section */
+    .subscribe .sectionContainer .inputDiv {
+        justify-content: space-between;
+    }
+
+    .subscribe .sectionContainer .inputDiv .btn {
+        max-width: max-content;
+    }
+
+
+}
+
+@media screen and (min-width:680px) {
+
+    /* Home sedction */
+    .home .mainText {
+        width: 90%;
+    }
+
+    .home .homeImages .imageDiv {
+        width: 90%;
+    }
+
+    .home .homeImages .imageDiv .vimage {
+        height: 100%;
+        width: 100%;
+        border-radius: 3rem;
+    }
+}
+
+@media screen and (min-width:768px) {
+
+    /* navbar section */
+    .navBar {
+        align-items: center;
+    }
+
+    .navBar .navBarOne .none {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .navBar .navBarOne .none li {
+        font-size: 14px;
+        gap: .5rem;
+        color: var(--textColor);
+    }
+
+    .navBar .navBarOne .none li:hover {
+        color: var(--PrimaryColor);
+        text-decoration: underline;
+    }
+
+    .navBar .navBartTwo {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navBar .navBartTwo .logoDiv .logo {
+        max-width: 60%;
+    }
+
+    .navBar .navBartTwo .menu {
+        flex-direction: row;
+        gap: .7rem;
+    }
+
+    .navBar .navBartTwo .menu .listItem {
+        padding: 0 .5rem;
+        font-size: 14px;
+        cursor: pointer;
+        color: var(--textColor);
+        font-weight: 700;
+    }
+
+    .navBar .navBartTwo .menu .listItem:hover {
+        color: var(--PrimaryColor);
+        font-weight: 700;
+    }
+
+    .navBar .navBartTwo .btnOne,
+    .btnTwo,
+    .toggleIcon {
+        display: none;
+    }
+
+    /* Support section */
+    .support .sectionContainer .infoDiv {
+        margin-top: 5rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .support .sectionContainer .infoDiv .textDiv {
+        margin-top: 0rem;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    /* Info Section */
+    .info .infoContainer {
+        padding: 0 6rem;
+    }
+
+    .info .infoContainer .tittleDiv {
+        margin: auto;
+        align-items: center;
+        width: 90%;
+    }
+
+    .info .infoContainer .cardsDiv {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .info .infoContainer .cardsDiv .singleCard {
+        max-width: 290px;
+        padding: 2rem 1rem;
+    }
+
+    /* Lounge section */
+    .lounge .sectionContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lounge .sectionContainer .textDiv {
+        grid-area: 1;
+    }
+
+    .lounge .sectionContainer .textDiv .grids {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Partner section */
+    .partner .partnerContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media screen and (min-width:960px) {
+
+    /* Home sedction */
+    .home {
+        padding-top: 13rem;
+    }
+
+    .home .mainText {
+        width: 85%;
+        padding-bottom: 1.5rem;
+        font-size: 22px;
+        line-height: 4rem;
+    }
+
+    /* Partner section */
+    .partner .partnerContainer {
+        grid-template-columns: repeat(4, 1fr);
+        margin: 3rem 0;
+    }
+}
+
+@media screen and (min-width:1024px) {
+
+    /* Default styling */
+    p {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    .section {
+        padding: 6rem 0 4rem;
+    }
+
+    .container {
+        width: 75%;
+        margin: auto;
+    }
+
+    /* navbar section */
+    .navBar .navBarOne,
+    .navBartTwo {
+        padding: 1.5rem 5rem;
+    }
+
+    .navBar .navbar_With_Bg {
+        padding: .5 5rem;
+    }
+
+
+    /* Home section */
+
+    .home .mainText {
+        width: 50%;
+        font-size: 25px;
+        line-height: 4rem;
+    }
+
+    .home .homeImages .imageDiv {
+        width: 90%;
+        height: 300px;
+    }
+
+    .home .homeImages .imageDiv .vimage {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 2rem;
+    }
+
+}
+
+@media screen and (min-width:1106px) {
+
+    /* subscribe section */
+    .subscribe .sectionContainer {
+        max-width: 60%;
+    }
+}
+
+@media screen and (min-width:1332px) {
+
+    /* navbar section */
+    .navBar .navBartTwo .menu {
+        gap: 1rem;
+        left: 0;
+    }
+
+    .navBar .navBartTwo .menu .listItem {
+        padding: 0 1.5rem;
+        font-size: 14px;
+    }
+
+
+    /* Support section */
+    .support .sectionContainer .infoDiv {
+        gap: 1rem;
+    }
+
+    .support .sectionContainer .infoDiv .textDiv .singleInfo p {
+        max-width: 500px;
+    }
+
+    /* subscribe section */
+    .subscribe .sectionContainer {
+        max-width: 50%;
+    }
+}
+
+/* ::selection{
+    background: var(--PrimaryColor);
+    color: var(--whiteColor);
+}
+::-webkit-scrollbar{
+    width: 8%;
+    background: var(--greyBg);
+}
+::-webkit-scrollbar-thumb{
+    background: var(--PrimaryColor);
+    border-radius: 8px;
+} */
