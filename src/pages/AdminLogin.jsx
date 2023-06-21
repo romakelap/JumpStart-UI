@@ -1,8 +1,9 @@
 import React from 'react'
 import Logo from '../assets/img/header/logoJ.png'
 import '../style/form.css'
-import Footer from '../components/Footer'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
+
 const AdminLogin = () => {
     return (
         <>

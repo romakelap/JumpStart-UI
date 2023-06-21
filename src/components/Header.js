@@ -3,6 +3,7 @@ import { HiOutlineX, HiMenuAlt4 } from 'react-icons/hi';
 import MobileNav from '../components/MobileNav'
 import Nav from '../components/Nav'
 import { header } from '../data'
+import { Link } from 'react-router-dom'
 
 
 const Header = () => {
@@ -33,11 +34,13 @@ const Header = () => {
         </div>
         
         {/* button initialy hidden - show min desktop */}
+        <Link to="/register">
         <button className='btn btn-sm btn-outline hidden lg:flex'
         data-aos='fade-down' data-aos-delay='1400'
         >
           {btnText}
         </button>
+        </Link>
 
         {/* Mobile nav humberger */}
       <button className='lg:hidden' onClick={() =>
