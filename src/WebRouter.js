@@ -7,6 +7,7 @@ import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import AdminManageProduct from './pages/AdminManageProduct';
 
 
 const WebRouter = () => {
@@ -20,6 +21,7 @@ const WebRouter = () => {
         <Route path='/admin' element={<AdminDashboard/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
+        <Route path="/manageproduct" element={<AdminManageProduct/>}></Route>
         
 
     </Routes>
