@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 // import swiper react
-import {Swiper, SwiperSlide} from 'swiper/react'
+import {Swiper, SwiperSlide} from 'swiper/react';
 // import swiper styles
-import 'swiper/css'
+import 'swiper/css';
 
 const ClientSlider = ({clients}) => {
   return <Swiper slidesPerView={1} spaceBetween={30} grabCursor={true} 

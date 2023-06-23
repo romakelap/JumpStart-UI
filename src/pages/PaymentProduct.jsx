@@ -1,7 +1,7 @@
-import React from 'react'
-import Logo from '../assets/img/header/logoJ.png'
-import product from '../assets/laptop.jpg'
-import '../style/form.css'
+import React from 'react';
+import Logo from '../assets/img/header/logoJ.png';
+import product from '../assets/laptop.jpg';
+import '../style/form.css';
 import { FaCcPaypal } from 'react-icons/fa';
 import Header from '../components/Header';
 import Footer from '../components/Footer';

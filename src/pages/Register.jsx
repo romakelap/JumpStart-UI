@@ -1,9 +1,9 @@
-import React from 'react'
-import Logo from '../assets/img/header/logoJ.png'
-import '../style/form.css'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import Cta from '../components/Cta'
+import React from 'react';
+import Logo from '../assets/img/header/logoJ.png';
+import '../style/form.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Cta from '../components/Cta';
 const Register = () => {
     return (
         <>

@@ -1,5 +1,5 @@
-import React from 'react'
-import {overview} from '../data'
+import React from 'react';
+import {overview} from '../data';
 
 const Overview = () => {
   // destructure overview data

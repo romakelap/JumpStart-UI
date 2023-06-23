@@ -1,7 +1,14 @@
-import React from 'react'
+import React from 'react';
+import Header from '../components/Header';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 const Profile = () => {
 	return (
+		<>
+		<Header/>
+		<br/>
+		<br/>
+		<br/>
 		<div className="p-16">
 			<div className="p-8 bg-white shadow mt-24">
 				<div className="grid grid-cols-1 md:grid-cols-3">
@@ -45,6 +52,9 @@ const Profile = () => {
 				</div>
 			</div>
 		</div>
+		<Footer/>
+		</>
+		
 	);
 }
 

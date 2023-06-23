@@ -1,9 +1,10 @@
-import React from 'react'
-import Logo from '../assets/img/header/logoJ.png'
-import '../style/form.css'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import Cta from '../components/Cta'
+import React from 'react';
+import Logo from '../assets/img/header/logoJ.png';
+import '../style/form.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Cta from '../components/Cta';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
@@ -47,8 +48,9 @@ const Login = () => {
                                     </div>
 
                                     {/* SUBMIT */}
-                                    <input type="submit" value="Login" className="sign-btnlog" />
-
+                                    <Link to='/profile'>
+                                        <input type="submit" value="Login" className="sign-btnlog" />
+                                    </Link>
                                     <p className="text">
                                         Forgotten your password or you login datails?
                                         <a href="/term">Get help</a> Term
@@ -71,7 +73,7 @@ const Login = () => {
                     </div>
                 </div>
             </main>
-            <Cta/>
+            <Cta />
             <Footer />
         </>
     )

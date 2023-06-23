@@ -1,7 +1,7 @@
-import React from 'react'
-import {footer} from '../data'
-import Copyright from '../components/Copyright'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import {footer} from '../data';
+import Copyright from '../components/Copyright';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   // destructure footer data

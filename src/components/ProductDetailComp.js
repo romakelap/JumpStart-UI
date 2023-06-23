@@ -1,8 +1,8 @@
-import React from 'react'
-import { MdOutlineHealthAndSafety } from 'react-icons/md'
-import '../style/detailProduct.css'
-import banner from '../assets/laptop.jpg'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { MdOutlineHealthAndSafety } from 'react-icons/md';
+import '../style/detailProduct.css';
+import banner from '../assets/laptop.jpg';
+import { Link } from 'react-router-dom';
 
 const ProductDetailComp = () => {
   return (

@@ -1,18 +1,20 @@
-import { useEffect, useState } from 'react'
-import Logo from '../assets/img/header/logoJ.png'
-import { useNavigate } from 'react-router-dom'
-import '../style/admin.css'
+import { useEffect, useState } from 'react';
+import Logo from '../assets/img/header/logoJ.png';
+import { useNavigate } from 'react-router-dom';
+import '../style/admin.css';
+import { Link } from 'react-router-dom';
 
 // icon
 import { GiCancel } from 'react-icons/gi';
 import { MdOutlineRememberMe } from 'react-icons/md';
 import { IoMdAddCircle } from 'react-icons/io';
-import { FaPeopleCarry, FaDonate, FaMotorcycle } from 'react-icons/fa';
+import { FaPeopleCarry, FaDonate, FaMotorcycle,FaStoreAlt } from 'react-icons/fa';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { BsSearch, BsX } from 'react-icons/bs';
 import TableProduct from '../components/TableAdmin/TableProduct';
 import TableTransaction from '../components/TableAdmin/TableTransaction';
 import OutletDropdown from '../components/OutletDropdown';
+import TableRetailRegion from '../components/TableAdmin/TableRetailRegion';
 
 const AdminDashboard = () => {
     const [activeLink, setActiveLink] = useState('food');
@@ -27,7 +29,7 @@ const AdminDashboard = () => {
     };
     const logoutHandler = () => {
         sessionStorage.removeItem('token');
-        navigate("/loginadmin");
+        navigate("/");
     };
     useEffect(() => {
         const sideMenu = document.querySelector("aside");
@@ -79,6 +81,9 @@ const AdminDashboard = () => {
                         </a>
                         <a className={activeLink === 'transaction' ? 'active' : ''} onClick={() => handleLinkClick('transaction')}><span className="material-icon"><FaDonate /></span>
                             <span className='fw-bold'>Transaction</span>
+                        </a>
+                        <a className={activeLink === 'retail' ? 'active' : ''} onClick={() => handleLinkClick('retail')}><span className="material-icon"><FaStoreAlt /></span>
+                            <span className='fw-bold'>Retail region</span>
                         </a>
                         <a onClick={logoutHandler}><span className="material-icon"><AiOutlineLogout /></span>
                             <span onClick={logoutHandler} className='fw-bold'>Log out</span>
@@ -172,10 +177,12 @@ const AdminDashboard = () => {
                         <button type="submit" className="ButtonCustomer" onClick={togglePopup}>
                             Orders
                         </button>
-
+                        <Link to={"/manageproduct"}>
                         <button type="submit" className="buttonadd">
                             Add
                         </button>
+                        </Link>
+                        
 
                         {/* =============POP UP START==================== */}
 
@@ -205,7 +212,7 @@ const AdminDashboard = () => {
                                                 <td className="px-4 py-2">12</td>
                                                 <td className="px-4 py-2">$3</td>
                                                 <td className="px-4 py-2">$3</td>
-                                                <OutletDropdown/>
+                                                <OutletDropdown />
                                             </tr>
                                         </tbody>
                                     </table>
@@ -235,6 +242,11 @@ const AdminDashboard = () => {
                         {activeLink === 'transaction' && (
                             <div>
                                 <TableTransaction />
+                            </div>
+                        )}
+                        {activeLink === 'retail' && (
+                            <div>
+                                <TableRetailRegion />
                             </div>
                         )}
                         {/* =====================IF THE DONATOR ACTIVE END */}
@@ -270,7 +282,7 @@ const AdminDashboard = () => {
                                     <img src="https://images.unsplash.com/photo-1566761284295-af58908238bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80" />
                                 </div>
                                 <div className="message">
-                                    <p><b>Jordan</b> received his order from rider</p>
+                                    <p><b>Outlet 3</b> received his order from rider</p>
                                     <small className="text-muted">3 minutes ago</small>
                                 </div>
                             </div>
@@ -279,7 +291,7 @@ const AdminDashboard = () => {
                                     <img src="https://images.unsplash.com/photo-1566761284295-af58908238bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80" />
                                 </div>
                                 <div className="message">
-                                    <p><b>Lesti Kejora</b> received his order from rider</p>
+                                    <p><b>Outlet 2</b> received his order from rider</p>
                                     <small className="text-muted">3 minutes ago</small>
                                 </div>
                             </div>
@@ -288,7 +300,7 @@ const AdminDashboard = () => {
                                     <img src="https://images.unsplash.com/photo-1566761284295-af58908238bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80" />
                                 </div>
                                 <div className="message">
-                                    <p><b>Lesti Kejora</b> received his order from rider</p>
+                                    <p><b>Outlet 3</b> received his order from rider</p>
                                     <small className="text-muted">3 minutes ago</small>
                                 </div>
                             </div>

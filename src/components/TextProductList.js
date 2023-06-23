@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import '../style/landing.css'
+import '../style/landing.css';
 //import AOS
 import Aos from 'aos';
-import 'aos/dist/aos.css'
+import 'aos/dist/aos.css';
 
 const TextProductList = () => {
    // Use effect animation duration

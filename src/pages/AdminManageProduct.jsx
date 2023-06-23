@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import HeaderAdmin from '../components/TableAdmin/HeaderAdmin';
+import { Link } from 'react-router-dom';
 
 const AdminManageProduct = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -8,7 +10,9 @@ const AdminManageProduct = () => {
   };
 
   return (
-    <main>
+    <>
+    <HeaderAdmin/>
+    <main style={{ marginTop: '-190px' }} >
       <div className="box">
         <div className="inner-box">
           <div className="forms-wrap">
@@ -87,6 +91,9 @@ const AdminManageProduct = () => {
                 <br />
                 <br />
                 <input type="submit" value="Update" className="register" />
+                <Link to={"/admin"}>
+                <input type="submit" value="Cancel" className="cancel" />
+                </Link>
               </div>
             </form>
           </div>
@@ -98,6 +105,8 @@ const AdminManageProduct = () => {
         </div>
       </div>
     </main>
+    </>
+    
   )
 }
 

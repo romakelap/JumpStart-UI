@@ -1,5 +1,5 @@
-import React from 'react'
-import {features} from '../data'
+import React from 'react';
+import {features} from '../data';
 
 const Feature1 = () => {
   // destructure features

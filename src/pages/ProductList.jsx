@@ -1,11 +1,11 @@
-import React from 'react'
-import Header from '../components/Header'
-import Home from '../components/Home'
-import TextProductList from '../components/TextProductList'
-import banner from '../assets/productj.png'
-import '../style/ProductCard.css'
-import Cta from '../components/Cta'
-import Footer from '../components/Footer'
+import React from 'react';
+import Header from '../components/Header';
+import Home from '../components/Home';
+import TextProductList from '../components/TextProductList';
+import banner from '../assets/productj.png';
+import '../style/ProductCard.css';
+import Cta from '../components/Cta';
+import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 
 const ProductList = () => {

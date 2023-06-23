@@ -1,5 +1,5 @@
-import React from 'react'
-import {hero} from '../data'
+import React from 'react';
+import {hero} from '../data';
 const Hero = () => {
 
   //Destruce hero data

@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { testimonials } from '../data';
-import ClientSlider from '../components/ClientSlider'
+import ClientSlider from '../components/ClientSlider';
 
 const Testimonials = () => {
   // Destructure testimonials

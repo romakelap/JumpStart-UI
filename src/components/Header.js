@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { HiOutlineX, HiMenuAlt4 } from 'react-icons/hi';
-import MobileNav from '../components/MobileNav'
-import Nav from '../components/Nav'
-import { header } from '../data'
-import { Link } from 'react-router-dom'
+import MobileNav from '../components/MobileNav';
+import Nav from '../components/Nav';
+import { header } from '../data';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -19,7 +19,7 @@ const Header = () => {
   });
   return (
     
-    <header className={`${isActive ? 'lg:top-0 bg-white shadow-2xl':'lg:top-[60px]'}
+    <div className={`${isActive ? 'lg:top-0 bg-white shadow-2xl':'lg:top-[60px]'}
     py-6 lg:py-4 fixed w-full transition-all z-10
     `}>
       <div className='container mx-auto flex justify-between items-center'>
@@ -59,7 +59,7 @@ const Header = () => {
         <MobileNav/>
       </div>
       </div>
-    </header>
+    </div>
     
   );
 };
