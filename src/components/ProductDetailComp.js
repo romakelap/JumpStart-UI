@@ -2,6 +2,7 @@ import React from 'react'
 import { MdOutlineHealthAndSafety } from 'react-icons/md'
 import '../style/detailProduct.css'
 import banner from '../assets/laptop.jpg'
+import { Link } from 'react-router-dom'
 
 const ProductDetailComp = () => {
   return (
@@ -16,7 +17,9 @@ const ProductDetailComp = () => {
             <h1>Kacamata</h1>
             <p className="text-yellow-500">$110</p>
             <div className="options">
+             <Link className="btnorder" to="/paymentproduct">
               <button className="btnorder bg-green-500">Order</button> 
+              </Link>
             </div>
           </div>
           <div className="description">

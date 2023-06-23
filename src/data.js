@@ -18,6 +18,8 @@ export const nav = [
   { name: 'About us', href: '/' },
   { name: 'Product', href: '/products' },
   { name: 'Contact us', href: '/' },
+  { name: 'Login', href: '/login' },
+  { name: 'Register', href: '/register' },
 ];
 
 export const hero = {

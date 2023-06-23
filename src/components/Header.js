@@ -24,19 +24,19 @@ const Header = () => {
     `}>
       <div className='container mx-auto flex justify-between items-center'>
         {/* Logo */}
-        <a href='#' data-aos='fade-down' data-aos-delay='1000'>
+        <a href='#' data-aos='fade-down' data-aos-duration='1000'>
           <img src={logo} alt='logo jumpstart'></img>
         </a>
 
         {/* nav initialy hidden - show min desktop */}
-        <div className='hidden lg:flex' data-aos='fade-down' data-aos-delay='1200'>
+        <div className='hidden lg:flex' data-aos='fade-down' data-aos-duartion='1200'>
           <Nav/>
         </div>
         
         {/* button initialy hidden - show min desktop */}
         <Link to="/register">
         <button className='btn btn-sm btn-outline hidden lg:flex'
-        data-aos='fade-down' data-aos-delay='1400'
+        data-aos='fade-down' data-aos-duration='1400'
         >
           {btnText}
         </button>
