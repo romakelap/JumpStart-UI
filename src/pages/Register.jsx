@@ -16,7 +16,7 @@ const Register = () => {
                             {/* FORM START */}
                             <form className="sign-in-form">
                                 <div className="logo">
-                                    <img src={Logo} alt="Marry meals" />
+                                    <img src={Logo} />
                                 </div>
                                 <div className="heading">
                                     <h2>Get Join</h2>

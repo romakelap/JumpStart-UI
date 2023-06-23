@@ -25,12 +25,12 @@
   --color-light: rgba(132, 139, 200, 0.491);
   --konol: #111e88;
 
-  --card-border-radius: 2rem;
+  --card-border-radius: 1rem;
   --border-radius-1: o.4rem;
   --border-radius-2: 0.8rem;
   --border-radius-3: 1.2rem;
 
-  --card-padding: 1.8rem;
+  --card-padding: 0.8rem;
   --padding-1: 1.2rem;
 
   --box-shadow: 1rem 2rem 3rem var(--color-light);
@@ -153,7 +153,7 @@ aside .sidebar a {
 }
 
 .sidebar a.active {
-  background: rgba(255, 114, 53, 0.283);
+  background: rgba(255, 209, 190, 0.283);
   color: black;
   margin-left: 0;
 }

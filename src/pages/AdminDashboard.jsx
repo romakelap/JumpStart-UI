@@ -12,6 +12,7 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import { BsSearch, BsX } from 'react-icons/bs';
 import TableProduct from '../components/TableAdmin/TableProduct';
 import TableTransaction from '../components/TableAdmin/TableTransaction';
+import OutletDropdown from '../components/OutletDropdown';
 
 const AdminDashboard = () => {
     const [activeLink, setActiveLink] = useState('food');
@@ -19,12 +20,6 @@ const AdminDashboard = () => {
     const handleLinkClick = (link) => {
         setActiveLink(link);
     };
-
-    const styles = {
-        padding: '0rem 0.5rem',
-        marginLeft: '1rem'
-    };
-
     const [isOpen, setIsOpen] = useState(false);
 
     const togglePopup = () => {
@@ -210,9 +205,7 @@ const AdminDashboard = () => {
                                                 <td className="px-4 py-2">12</td>
                                                 <td className="px-4 py-2">$3</td>
                                                 <td className="px-4 py-2">$3</td>
-                                                <td className="px-4 py-2">
-                                                    <button className="mr-2 px-4 py-2 bg-green-500 text-white rounded-md">Process</button>
-                                                </td>
+                                                <OutletDropdown/>
                                             </tr>
                                         </tbody>
                                     </table>
