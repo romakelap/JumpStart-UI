@@ -3,7 +3,6 @@ import Logo from '../assets/img/header/logoJ.png';
 import '../style/form.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Cta from '../components/Cta';
 const Register = () => {
     return (
         <>
@@ -80,7 +79,6 @@ const Register = () => {
                     </div>
                 </div>
             </main>
-            <Cta/>
             <Footer/>
         </>
         

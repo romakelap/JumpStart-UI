@@ -3,7 +3,6 @@ import Logo from '../assets/img/header/logoJ.png';
 import '../style/form.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Cta from '../components/Cta';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
@@ -73,7 +72,6 @@ const Login = () => {
                     </div>
                 </div>
             </main>
-            <Cta />
             <Footer />
         </>
     )
