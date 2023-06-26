@@ -3,18 +3,20 @@ import Logo from '../assets/img/header/logoJ.png';
 import { useNavigate } from 'react-router-dom';
 import '../style/admin.css';
 import { Link } from 'react-router-dom';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 // icon
 import { GiCancel } from 'react-icons/gi';
 import { MdOutlineRememberMe } from 'react-icons/md';
 import { IoMdAddCircle } from 'react-icons/io';
-import { FaPeopleCarry, FaDonate, FaMotorcycle,FaStoreAlt } from 'react-icons/fa';
+import { FaPeopleCarry, FaDonate, FaMotorcycle, FaStoreAlt } from 'react-icons/fa';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { BsSearch, BsX } from 'react-icons/bs';
 import TableProduct from '../components/TableAdmin/TableProduct';
 import TableTransaction from '../components/TableAdmin/TableTransaction';
 import OutletDropdown from '../components/OutletDropdown';
 import TableRetailRegion from '../components/TableAdmin/TableRetailRegion';
+import TableRetailADD from '../components/TableAdmin/TableRetailADD';
 
 const AdminDashboard = () => {
     const [activeLink, setActiveLink] = useState('food');
@@ -75,6 +77,8 @@ const AdminDashboard = () => {
                             <GiCancel />
                         </div>
                     </div>
+
+                    {/* NAVBAR RIGHT */}
                     <div className="sidebar">
                         <a className={activeLink === 'product' ? 'active' : ''} onClick={() => handleLinkClick('product')}><span className="material-icon"><IoMdAddCircle /></span>
                             <span className=''>Product</span>
@@ -83,6 +87,9 @@ const AdminDashboard = () => {
                             <span className='fw-bold'>Transaction</span>
                         </a>
                         <a className={activeLink === 'retail' ? 'active' : ''} onClick={() => handleLinkClick('retail')}><span className="material-icon"><FaStoreAlt /></span>
+                            <span className='fw-bold'>Retail region product</span>
+                        </a>
+                        <a className={activeLink === 'retailadd' ? 'active' : ''} onClick={() => handleLinkClick('retailadd')}><span className="material-icon"><FaStoreAlt /></span>
                             <span className='fw-bold'>Retail region</span>
                         </a>
                         <a onClick={logoutHandler}><span className="material-icon"><AiOutlineLogout /></span>
@@ -166,7 +173,6 @@ const AdminDashboard = () => {
                     {/* ========================TABLE START========================= */}
 
 
-
                     {/* ====================SEARCH START=================================== */}
                     <div className="search flex">
                         <input type="text" className="searchTerm" placeholder="Search here" />
@@ -174,18 +180,35 @@ const AdminDashboard = () => {
                             <BsSearch />
                         </button>
 
+
+                        {/* BUTTON CUSTOMERS ORDERS */}
                         <button type="submit" className="ButtonCustomer" onClick={togglePopup}>
-                            Orders
+                        <span style={{ fontSize: '13px' }}>Orders </span>
                         </button>
+
+
                         <Link to={"/manageproduct"}>
-                        <button type="submit" className="buttonadd">
-                            Add
-                        </button>
+                            {/* BUTTON ADD Product */}
+                            {activeLink !== 'retailadd' && (
+                                <button type="submit" className="buttonadd">
+                                   <span style={{ fontSize: '13px' }}>Add Product</span>
+                                </button>
+                            )}
                         </Link>
-                        
+
+                        {/* =====================IF THE RetailregionADD ACTIVE button add retail appear*/}
+                        {activeLink === 'retailadd' && (
+                            //  {/* BUTTON ADD Retail */}
+                            <Link to={"/manageretail"}>
+                                <button type="submit" className="buttonadd">
+                                    Add Retail
+                                </button>
+                            </Link>
+                        )}
+
+
 
                         {/* =============POP UP START==================== */}
-
                         {isOpen && (
                             <div className="fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-black bg-opacity-50">
                                 <div className="p-8 bg-white rounded-md">
@@ -218,7 +241,6 @@ const AdminDashboard = () => {
                                     </table>
                                 </div>
                             </div>
-
                             //  {/* =============POP UP END==================== */}
 
                         )}
@@ -230,26 +252,42 @@ const AdminDashboard = () => {
                     {/* ==========================DATA TABLE START=========================== */}
                     <div className="recent-list">
 
-                        {/* =====================IF THE PARTNER ACTIVE START*/}
+                        {/* =====================IF THE Product ACTIVE START*/}
                         {activeLink === 'product' && (
                             <div>
                                 <TableProduct />
                             </div>
                         )}
-                        {/* =====================IF THE PARTNER ACTIVE END */}
+                        {/* =====================IF THE Product ACTIVE END */}
 
-                        {/* =====================IF THE DONATOR ACTIVE START*/}
+
+
+                        {/* =====================IF THE transaction ACTIVE START*/}
                         {activeLink === 'transaction' && (
                             <div>
                                 <TableTransaction />
                             </div>
                         )}
+                        {/* =====================IF THE transaction ACTIVE END*/}
+
+
+                        {/* =====================IF THE RetailregionProduct ACTIVE START*/}
                         {activeLink === 'retail' && (
                             <div>
                                 <TableRetailRegion />
                             </div>
                         )}
-                        {/* =====================IF THE DONATOR ACTIVE END */}
+                        {/* =====================IF THE RetailregionProduct ACTIVE END*/}
+
+
+                        {/* =====================IF THE RetailregionADD ACTIVE START*/}
+                        {activeLink === 'retailadd' && (
+                            <div>
+                                <TableRetailADD />
+                            </div>
+                        )}
+                        {/* =====================IF THE RetailregionADD ACTIVE END*/}
+
 
 
                     </div>

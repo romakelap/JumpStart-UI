@@ -10,7 +10,7 @@ import Footer from '../components/Footer';
 const PaymentProduct = () => {
     return (
         <>
-        <Header/>
+            <Header />
             <main>
                 <div className="box">
                     <div className="inner-box">
@@ -51,6 +51,14 @@ const PaymentProduct = () => {
                                             className="input-field-message" autoComplete="off" required
                                         />
                                     </div>
+                                    <div className="input-wrap">
+                                        <select style={{ marginTop: '50px' }} name="Select Retail Region" className="input-field" required>
+                                            <option value="">Select Retail Region</option>
+                                            <option value="region1">Region 1</option>
+                                            <option value="region2">Region 2</option>
+                                            <option value="region3">Region 3</option>
+                                        </select>
+                                    </div>
 
                                     <div className="input-wrap flex">
                                     </div>
@@ -67,9 +75,6 @@ const PaymentProduct = () => {
 
                                     {/* BUTTON BUY */}
                                     <input type="submit" value="Buy" className="sign-btn" />
-                                    <p className="text">
-                                        *the goods will arrive after payment and the process of packing and shipping
-                                    </p>
                                 </div>
                             </form>
                         </div>
@@ -81,7 +86,7 @@ const PaymentProduct = () => {
                     </div>
                 </div>
             </main>
-            <Footer/>
+            <Footer />
         </>
 
     )

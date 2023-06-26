@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import AdminManageProduct from './pages/AdminManageProduct';
 import Profile from './pages/Profile';
 import UpdateProfile from './pages/UpdateProfile';
+import AdminManageRetail from './pages/AdminManageRetail';
 
 
 const WebRouter = () => {
@@ -24,6 +25,7 @@ const WebRouter = () => {
         <Route path="/manageproduct" element={<AdminManageProduct/>}></Route>
         <Route path="/profile" element={<Profile/>}></Route>
         <Route path="/updateprofile" element={<UpdateProfile/>}></Route>
+        <Route path="/manageretail" element={<AdminManageRetail/>}></Route>
     </Routes>
   )
 }

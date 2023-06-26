@@ -31,6 +31,9 @@ const Profile = () => {
 							<img src="https://i.ibb.co/F5tyqmJ/profile.png" alt="Profile" className="w-full h-full object-cover rounded-full" />
 						</div>
 					</div>
+
+
+					{/* BUTTON UPDATE */}
 					<div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
 						<Link to="/updateprofile">
 							<button className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
@@ -40,8 +43,14 @@ const Profile = () => {
 					</div>
 				</div>
 				<div className="mt-20 text-center border-b pb-12">
+
+					{/* Firstname and Lastname  and age*/}
 					<h1 className="text-4xl font-medium text-gray-700">Dimas Sumanto, <span className="font-light text-gray-500">27</span></h1>
+
+					{/* Address */}
 					<p className="font-light text-gray-600 mt-3">Bali Indonesia</p>
+
+					{/* Gender */}
 					<p className="mt-8 text-gray-500">Male</p>
 				</div>
 				<div className="mt-12 flex flex-col justify-center">
