@@ -26,7 +26,7 @@ const navigate = useNavigate();
     try {
       // Call the register method from the service
       const response = await Service.register(data);
-      alert(response.data)
+      alert(response)
       navigate("/login")
       // Handle the response here (e.g., show success message, redirect user, etc.)
     } catch (error) {

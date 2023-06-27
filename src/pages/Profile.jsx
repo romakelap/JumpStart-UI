@@ -1,10 +1,11 @@
 import React from 'react';
 import Header from '../components/Header';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Service from '../service/Service';
 import { useState,useEffect } from 'react';
 const Profile = () => {
+	const navigate = useNavigate()
 	const [profileData, setProfileData] = useState(null);
 	useEffect(() => {
 		const fetchProfileData = async () => {
@@ -18,6 +19,9 @@ const Profile = () => {
 	
 	fetchProfileData();
 	}, []);
+	const handleUpdateProfile = () => {
+		navigate('/updateprofile', { state: { profileData } });
+	};
 	return (
 		<>
 		<Header/>
@@ -50,11 +54,11 @@ const Profile = () => {
 
 					{/* BUTTON UPDATE */}
 					<div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
-						<Link to="/updateprofile">
-							<button className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+				
+							<button onClick={handleUpdateProfile} className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
 								Update
 							</button>
-						</Link>
+						
 					</div>
 				</div>
 				<div className="mt-20 text-center border-b pb-12">
