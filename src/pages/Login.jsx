@@ -3,9 +3,28 @@ import Logo from '../assets/img/header/logoJ.png';
 import '../style/form.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
+import Service from '../service/Service';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const handleLogin = async (event) =>{
+        event.preventDefault();
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        const data = {
+            email,
+            password,
+        };
+        try {
+            const response = await Service.login(data);
+            sessionStorage.setItem('token',response.token)
+            navigate("/products")
+        } catch (error) {
+            // Handle errors here (e.g., show error message)
+            console.error(error);
+        }
+    }
     return (
         <>
             <Header />
@@ -16,7 +35,7 @@ const Login = () => {
 
 
                             {/* FORM */}
-                            <form className="sign-in-form">
+                            <form className="sign-in-form" onSubmit={handleLogin}>
                                 <div className="logo">
                                     <img src={Logo} alt="Marry meals" />
                                 </div>
@@ -29,7 +48,7 @@ const Login = () => {
 
                                     {/* USERNAME */}
                                     <div className="input-wrap">
-                                        <label className="label">Username</label>
+                                        <label className="label">email</label>
                                         <input
                                             type="text"
                                             name="email"
@@ -47,9 +66,8 @@ const Login = () => {
                                     </div>
 
                                     {/* SUBMIT */}
-                                    <Link to='/profile'>
-                                        <input type="submit" value="Login" className="sign-btnlog" />
-                                    </Link>
+                                    <button type="submit" className="sign-btnlog">Login</button>
+                                    
                                     <p className="text">
                                         Forgotten your password or you login datails?
                                         <a href="/term">Get help</a> Term
