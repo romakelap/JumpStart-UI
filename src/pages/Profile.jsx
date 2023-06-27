@@ -2,7 +2,22 @@ import React from 'react';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import Service from '../service/Service';
+import { useState,useEffect } from 'react';
 const Profile = () => {
+	const [profileData, setProfileData] = useState(null);
+	useEffect(() => {
+		const fetchProfileData = async () => {
+		  try {
+			const data = await Service.profile();
+			setProfileData(data.userDetail);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+	
+	fetchProfileData();
+	}, []);
 	return (
 		<>
 		<Header/>
@@ -45,13 +60,16 @@ const Profile = () => {
 				<div className="mt-20 text-center border-b pb-12">
 
 					{/* Firstname and Lastname  and age*/}
-					<h1 className="text-4xl font-medium text-gray-700">Dimas Sumanto, <span className="font-light text-gray-500">27</span></h1>
+					<h1 className="text-4xl font-medium text-gray-700">
+					{profileData ? profileData.firstname : ''} {profileData ? profileData.lastname : ''}, 
+					<span className="font-light text-gray-500">{profileData ? profileData.age : ''}</span>
+					</h1>
 
 					{/* Address */}
-					<p className="font-light text-gray-600 mt-3">Bali Indonesia</p>
+					<p className="font-light text-gray-600 mt-3">{profileData ? profileData.address : ''}</p>
 
 					{/* Gender */}
-					<p className="mt-8 text-gray-500">Male</p>
+					<p className="mt-8 text-gray-500">{profileData ? profileData.gender : ''}</p>
 				</div>
 				<div className="mt-12 flex flex-col justify-center">
 					<p className="text-gray-600 text-center font-light lg:px-16">Welcome to jumpstart, hope you enjoy shopping here</p>
