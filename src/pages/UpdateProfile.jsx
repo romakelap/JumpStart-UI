@@ -1,8 +1,29 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
+import { Link,useLocation ,useNavigate} from 'react-router-dom';
 import Header from '../components/Header';
+import Service from '../service/Service';
 const UpdateProfile = () => {
+  const location = useLocation();
+  const [profileData, setProfileData] = useState(location.state.profileData);
+  const navigate = useNavigate();
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setProfileData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSaveProfile = async (event) => {
+    try {
+      const response = await Service.updateProfile(profileData);
+      navigate("/profile")
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
     <Header/>
@@ -36,7 +57,7 @@ const UpdateProfile = () => {
 
           {/* BUTTON SAVE AND CANCEL */}
           <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
-            <button className="text-white py-2 px-4 uppercase rounded bg-green-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+            <button onClick={handleSaveProfile} className="text-white py-2 px-4 uppercase rounded bg-green-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
               Save
             </button>
 
@@ -53,13 +74,13 @@ const UpdateProfile = () => {
         <div className="mt-20 text-left border-b pb-12">
           <form className="w-full max-w-lg">
             <div className="flex flex-wrap -mx-3 mb-6">
-
               {/* FIRSTNAME */}
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
                   First Name
                 </label>
-                <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" />
+                <input name="firstname"
+  onChange={handleChange} value={profileData.firstname} className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" />
               </div>
 
               {/* LASTNAME */}
@@ -67,7 +88,8 @@ const UpdateProfile = () => {
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
                   Last Name
                 </label>
-                <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" />
+                <input name="lastname"
+  onChange={handleChange} value={profileData.lastname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" />
               </div>
 
               {/* AGE */}
@@ -75,7 +97,8 @@ const UpdateProfile = () => {
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
                   Age
                 </label>
-                <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="number" placeholder="22" />
+                <input name="age"
+  onChange={handleChange} value={profileData.age} className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="number" placeholder="22" />
               </div>
 
               {/* GENDER */}
@@ -83,7 +106,8 @@ const UpdateProfile = () => {
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
                   Gender
                 </label>
-                <select
+                <select name="gender"
+  onChange={handleChange} value={profileData.gender}
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   id="grid-last-name"
                 >
@@ -101,7 +125,8 @@ const UpdateProfile = () => {
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                   Address
                 </label>
-                <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="Bali Indonesia" />
+                <input name="address"
+  onChange={handleChange} value={profileData.address} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="Bali Indonesia" />
                 <p className="text-gray-600 text-xs italic">Make sure the address is filled in correctly so that there are no mistakes during delivery</p>
               </div>
             </div>
