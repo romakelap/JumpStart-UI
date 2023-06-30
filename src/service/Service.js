@@ -1,5 +1,6 @@
 
 import axios from 'axios';
+import { Form } from "react-router-dom";
 
 const API_BASE_URL = 'http://localhost:8080';
 const token = sessionStorage.getItem('token');
@@ -107,21 +108,30 @@ class Service {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
+
     async addRetailProduct(data) {
         const token = sessionStorage.getItem('token');
         return await axios.post(API_BASE_URL + "/api/admin/retail-regions/product", data, {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
+
     async updateRetailProduct(data) {
         const token = sessionStorage.getItem('token');
         return await axios.put(API_BASE_URL + "/api/admin/retail-regions/product", data, {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
+
     async deleteRetailProduct(id) {
         const token = sessionStorage.getItem('token');
         return await axios.delete(API_BASE_URL + "/api/admin/retail-regions/product/" + id, {
+            headers: { Authorization: 'Bearer ' + token }
+        });
+    }
+
+    async search(query) {
+        return await axios.get(`${API_BASE_URL}/api/base/products/${query}`, {
             headers: { Authorization: 'Bearer ' + token }
         });
     }

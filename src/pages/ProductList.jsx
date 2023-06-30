@@ -38,6 +38,18 @@ const ProductList = () => {
     navigate(`/detail`, { state: { data, image } });
   };
 
+  const search = (name) => {
+    if (name === "") {
+      Service.allProduct()
+        .then(response => setProducts(response));
+    } else {
+      Service.search(name)
+        .then(response => setProducts(response.data))
+        .catch(error => console.error(error));
+    }
+
+  };
+
   return (
     <>
       <Header />
@@ -47,14 +59,15 @@ const ProductList = () => {
       {/* Search start */}
       <div>
         <div className="flex flex-col p-2 py-6 m-h-screen">
-          <div className="bg-white items-center justify-between w-full flex rounded-full shadow-lg p-2 mb-5 sticky" style={{top: '5px'}}>
+          <div className="bg-white items-center justify-between w-full flex rounded-full shadow-lg p-2 mb-5 sticky" style={{ top: '5px' }}>
             <div>
               <div className="p-2 mr-1 rounded-full hover:bg-gray-100 cursor-pointer">
               </div>
             </div>
 
             {/* Input */}
-            <input className="font-bold uppercase rounded-full w-full py-4 pl-4 text-gray-700 bg-gray-100 leading-tight focus:outline-none focus:shadow-outline lg:text-sm text-xs" type="text" placeholder="Search product here" />
+            <input className="font-bold uppercase rounded-full w-full py-4 pl-4 text-gray-700 bg-gray-100 leading-tight focus:outline-none focus:shadow-outline lg:text-sm text-xs" type="text" placeholder="Search product here"
+              onKeyUp={(e) => { search(e.target.value); }} />
 
             {/* Icon Search */}
             <div className="bg-gray-600 p-2 cursor-pointer mx-2 rounded-full">
