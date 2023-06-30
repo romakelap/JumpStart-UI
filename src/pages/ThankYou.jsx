@@ -1,6 +1,11 @@
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+
 export default function ThankYou() {
     return (
-        <div className="h-screen">
+        <>
+        <Header/>
+         <div className="h-screen">
             <div className="w-80 m-auto lg:mt-16 max-w-sm">
                 <img src="https://img.freepik.com/premium-vector/concept-online-commercemobile-app-payment-with-credit-card-web-banking-customer_183665-376.jpg" alt="" className="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover" />
                 <div className="bg-white shadow-2xl rounded-b-3xl">
@@ -10,7 +15,7 @@ export default function ThankYou() {
                     </div>
                     <div className="grid grid-cols-3 w-72 lg:w-5/6 m-auto bg-indigo-50 mt-5 p-4 lg:p-4 rounded-2xl">
                         <div className="col-span-1 mt-5">
-                            <img className="w-15 lg:w-12" src="https://img.freepik.com/premium-vector/check-mark-icon-flat-style-ok-accept-vector-illustration-white-isolated-background-tick-business-concept_157943-544.jpg?w=2000" alt="music icon" />
+                            <img className="w-15 lg:w-12" src="https://img.freepik.com/premium-vector/check-mark-icon-flat-style-ok-accept-vector-illustration-white-isolated-background-tick-business-concept_157943-544.jpg?w=2000" alt="" />
                         </div>
                         <div className="col-span-2 pt-2">
                             <p className="text-gray-800 font-bold lg:text-sm">your payment is successful</p>
@@ -26,5 +31,7 @@ export default function ThankYou() {
                 </div>
             </div>
         </div>
+        </>
+       
     );
 }
