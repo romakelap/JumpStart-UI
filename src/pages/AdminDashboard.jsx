@@ -195,7 +195,7 @@ const AdminDashboard = () => {
 
                         <Link to={"/manageproduct"}>
                             {/* BUTTON ADD Product */}
-                            {activeLink !== 'retailadd' && (
+                            {activeLink !== 'retailadd' && activeLink !== 'retail'  && (
                                 <button type="submit" className="buttonadd">
                                     <span style={{ fontSize: '13px' }}>Add Product</span>
                                 </button>
@@ -252,6 +252,7 @@ const AdminDashboard = () => {
                             //  {/* =============POP UP END==================== */}
 
                         )}
+                        
                     </div>
 
                     {/* ====================SEARCH END=================================== */}
