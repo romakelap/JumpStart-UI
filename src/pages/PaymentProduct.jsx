@@ -19,10 +19,12 @@ import Service from "../service/Service";
 const PaymentProduct = () => {
     const [productName, setProductName] = useSearchParams();
     const [productDetail, setProductDetail] = useState(undefined);
+    const [images, setImages] = useState(undefined);
     const [total, setTotal] = useState(0);
     const [customerName, setCustomerName] = useState(undefined);
     const [address, setAddress] = useState(undefined);
     const [retailRegionProductId, setRetailRegionProductId] = useState(1);
+    const [locations, setLocations] = useState(undefined);
 
     if (productName.get("p") === "" || productName.get("p") == null) {
         window.location.href = "/products";
@@ -33,8 +35,19 @@ const PaymentProduct = () => {
             .then(response => {
                 setProductDetail(response.data);
                 setTotal(response.data.price);
+
+                // get regions
+                Service.getRetailProductRegion(response.data.id).then(response => setLocations(response.data));
             })
             .catch(error => console.error(error));
+
+        // get image related to the product
+        Service.getImage()
+            .then(response => setImages(response.data))
+            .catch(error => console.error(error));
+
+
+
     }, []);
 
     const payment = () => {
@@ -61,7 +74,7 @@ const PaymentProduct = () => {
                         <div className="grid grid-cols-2 gap-10 p-10 h-[50%]">
                             {/* <img src={Logo} alt="jumpstart" /> */}
                             <div>
-                                <img src={product} alt="product image" className="h-auto rounded-2xl shadow-md" />
+                                <img src={images && images[productDetail.picture]} alt="product image" className="h-auto rounded-2xl shadow-md" />
                             </div>
                             <div>
                                 <div className="flex justify-between">
@@ -87,11 +100,13 @@ const PaymentProduct = () => {
                                             onChange={(e) => setAddress(e.target.value)} />
                                     </label>
 
-                                    <select className="w-full border-2 p-2 rounded-lg mb-3 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F9A826] transition">
+                                    <select className="w-full border-2 p-2 rounded-lg mb-3 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F9A826] transition" onChange={(e) => setRetailRegionProductId(e.target.value)}>
                                         <option value="">-- Select Region --</option>
-                                        <option value="">Indonesia</option>
-                                        <option value="">Singapore</option>
-                                        <option value="">Malaysia</option>
+                                        {
+                                            locations && locations.map((v, i) => {
+                                                return <option key={i} value={v.retailRegion.id}>{v.retailRegion.location}</option>;
+                                            })
+                                        }
                                     </select>
 
                                     <button className="flex gap-1 items-center justify-center border-2 w-full py-2 rounded-lg border-transparent text-[#F9A826] font-semibold shadow active:shadow-none transition hover:bg-[#F9A826] hover:text-white group" onClick={payment}>
