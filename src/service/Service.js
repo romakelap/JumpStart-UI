@@ -18,6 +18,7 @@ class Service {
     async profile() {
         return (await axios.get(API_BASE_URL + "/api/base/user/" + token)).data;
     }
+
     async updateProfile(data) {
         return (await axios.post(API_BASE_URL + "/api/base/user/profile", data));
     }
@@ -52,12 +53,14 @@ class Service {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
+
     async deleteProduct(id) {
         const token = sessionStorage.getItem('token');
         return await axios.delete(API_BASE_URL + "/api/admin/product/" + id, {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
+
     async allProduct() {
         return (await axios.get(API_BASE_URL + "/api/base/product")).data;
     }
@@ -77,12 +80,14 @@ class Service {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
+
     async updateRetail(data) {
         const token = sessionStorage.getItem('token');
         return await axios.put(API_BASE_URL + "/api/admin/retail-regions", data, {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
+
     async deleteRetail(id) {
         const token = sessionStorage.getItem('token');
         return await axios.delete(API_BASE_URL + "/api/admin/retail-regions/" + id, {
@@ -128,6 +133,10 @@ class Service {
         return await axios.delete(API_BASE_URL + "/api/admin/retail-regions/product/" + id, {
             headers: { Authorization: 'Bearer ' + token }
         });
+    }
+
+    async getRetailProductRegion(id) {
+        return await axios.get(`${API_BASE_URL}/api/base/retail-regions-product/${id}`);
     }
 
     async search(query) {
