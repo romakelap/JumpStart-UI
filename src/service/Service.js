@@ -21,10 +21,15 @@ class Service {
         return (await axios.post(API_BASE_URL + "/api/base/user/profile", data));
     }
 
-
     async addProduct(data) {
         return await axios.post(API_BASE_URL + "/api/admin/product", data, {
             headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
+        });
+    }
+
+    async addProductImage(image) {
+        return await axios.post(`${API_BASE_URL}/api/admin/product/image`, image, {
+            headers: { 'Authorization': `Bearer ${token}`, "Content-Type": "multipart/form-data", }
         });
     }
 
@@ -57,6 +62,14 @@ class Service {
         return (await axios.get(API_BASE_URL + "/api/base/product")).data;
     }
 
+    async getImage(imageName) {
+        return await axios.get(`${API_BASE_URL}/api/base/product/images`);
+    }
+
+    async getProduct(name) {
+        return await axios.get(`${API_BASE_URL}/api/base/product/${name.toLowerCase()}`);
+    };
+
     async addRetail(data) {
         const token = sessionStorage.getItem('token');
         return await axios.post(API_BASE_URL + "/api/admin/retail-regions", data, {
@@ -80,7 +93,6 @@ class Service {
 
     async allRetail() {
         return await axios.get(API_BASE_URL + "/api/admin/retail-regions");
-
     }
 }
 export default new Service();

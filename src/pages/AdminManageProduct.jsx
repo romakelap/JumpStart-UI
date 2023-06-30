@@ -3,14 +3,20 @@ import HeaderAdmin from '../components/TableAdmin/HeaderAdmin';
 import { Link, useNavigate } from 'react-router-dom';
 import Service from '../service/Service';
 import { useLocation } from 'react-router-dom';
+
 const AdminManageProduct = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [postImage, setPostImage] = useState(undefined);
+
   const location = useLocation();
   const navigate = useNavigate();
   const { data } = location.state || {};
+
   const handleImageChange = (event) => {
     setSelectedImage(URL.createObjectURL(event.target.files[0]));
+    setPostImage(event.target.files[0]);
   };
+
   useEffect(() => {
     if (data) {
       // Set the form field values using the received data
@@ -20,13 +26,13 @@ const AdminManageProduct = () => {
       document.getElementById('id').value = data.id || '';
     }
   }, [data]);
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     const form = event.target;
     const formData = new FormData(form);
-
     const data = {};
+
     for (let [name, value] of formData) {
       data[name] = value;
     }
@@ -35,21 +41,30 @@ const AdminManageProduct = () => {
       let productDescription = {
         id: data.id,
         name: data.name,
-        picture: data.picture.name,
+        picture: `${data.name}-${postImage.size}-${postImage.name}`,
         price: data.price,
         description: data.description
       };
+
       // Call the addProduct method from the Service
-      // console.log(productDescription)
       let response = null;
       if (data.id != '') {
         response = await Service.updateProduct(productDescription);
       } else {
         response = await Service.addProduct(productDescription);
+
+        // add product image
+        const image = new FormData();
+        image.append("image", postImage);
+        image.append("customName", productDescription.picture);
+
+        Service.addProductImage(image)
+          .then(response => console.log(response))
+          .catch(error => console.error(error));
       }
-      navigate('/admin');
+
+      navigate('/admin'); // Reset the form or redirect to another page
       alert(response.data);
-      // Reset the form or redirect to another page
     } catch (error) {
       console.error(error);
     }
@@ -62,7 +77,7 @@ const AdminManageProduct = () => {
           <div className="inner-box">
             <div className="forms-wrap">
               {/* FORM START */}
-              <form className="sign-in-form" onSubmit={handleFormSubmit}>
+              <form className="sign-in-form" onSubmit={handleFormSubmit} encType="multipart/form-data">
                 <div className="heading">
                   <h2>Manage Product</h2>
                 </div>
@@ -75,7 +90,7 @@ const AdminManageProduct = () => {
                         Name
                       </label>
                       <input
-                        className="appearance-none block w-full bg-blue-100 border border-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        className="appearance-none block w-full border border-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="grid-first-name"
                         name='name'
                         type="text"
@@ -90,10 +105,10 @@ const AdminManageProduct = () => {
                         Stock
                       </label>
                       <input
-                        className="appearance-none block w-full bg-blue-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-last-name"
-                        type="text"
-                        placeholder="999"
+                        type="number"
+                        placeholder="Stock"
                         style={{ background: "#E8F0FE", fontSize: "0.75rem", border: "1px solid black" }}
                       />
                     </div>
@@ -142,7 +157,6 @@ const AdminManageProduct = () => {
                     />
                   </div>
 
-
                   {/* UPDATE*/}
                   <br />
                   <br />
@@ -154,18 +168,17 @@ const AdminManageProduct = () => {
                 </div>
               </form>
             </div>
+
             <div className="carousel">
-              <div className="images-wrapper">
-                <img src={selectedImage} className="image img-1 show" alt="" />
+              <div className="images-wrapper overflow-hidden flex">
+                <img src={selectedImage} className="image img-1 show bg-gray-50 m-auto" alt=" " />
               </div>
             </div>
+
           </div>
         </div>
       </main>
     </>
-
   );
 };
-
 export default AdminManageProduct;
-
