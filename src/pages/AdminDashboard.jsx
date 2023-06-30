@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../style/admin.css';
 import { Link } from 'react-router-dom';
 import { AiOutlinePlus } from 'react-icons/ai';
-
+import Service from '../service/Service';
 // icon
 import { GiCancel } from 'react-icons/gi';
 import { MdOutlineRememberMe } from 'react-icons/md';
@@ -19,6 +19,8 @@ import TableRetailRegion from '../components/TableAdmin/TableRetailRegion';
 import TableRetailADD from '../components/TableAdmin/TableRetailADD';
 
 const AdminDashboard = () => {
+    
+
     const [activeLink, setActiveLink] = useState('food');
     const navigate = useNavigate();
     const handleLinkClick = (link) => {
@@ -34,6 +36,7 @@ const AdminDashboard = () => {
         navigate("/");
     };
     useEffect(() => {
+        
         const sideMenu = document.querySelector("aside");
         const menuBtn = document.querySelector("#menu-btn");
         const closeBtn = document.querySelector("#close-btn");
@@ -61,6 +64,8 @@ const AdminDashboard = () => {
                 });
             }
         };
+
+        
     }, []);
     return (
         <div className="adminbody">
@@ -210,7 +215,9 @@ const AdminDashboard = () => {
 
                         {/* =============POP UP START==================== */}
                         {isOpen && (
-                            <div className="fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-black bg-opacity-50">
+                            
+                                
+                            <div  className="fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-black bg-opacity-50">
                                 <div className="p-8 bg-white rounded-md">
                                     <div className="flex justify-between items-center mb-4">
                                         <h3 className="text-lg font-bold">Order Details</h3>
