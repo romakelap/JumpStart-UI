@@ -21,16 +21,30 @@ class Service {
         return (await axios.post(API_BASE_URL + "/api/base/user/profile", data));
     }
 
+    async addProduct(data) {
+        return await axios.post(API_BASE_URL + "/api/admin/product", data, {
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
+        });
+    }
+
+    async addProductImage(image) {
+        return await axios.post(`${API_BASE_URL}/api/admin/product/image`, image, {
+            headers: { 'Authorization': `Bearer ${token}`, "Content-Type": "multipart/form-data", }
+        });
+    }
+
     // Product
     async payment({ transactionalRequest, total }) {
         return await axios.post(`${API_BASE_URL}/api/payment/pay`, { transactionalRequest, total });
     }
+
     async addProduct(data) {
         const token = sessionStorage.getItem('token');
         return await axios.post(API_BASE_URL + "/api/admin/product", data, {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
+
     async updateProduct(data) {
         const token = sessionStorage.getItem('token');
         return await axios.put(API_BASE_URL + "/api/admin/product", data, {
@@ -46,6 +60,14 @@ class Service {
     async allProduct() {
         return (await axios.get(API_BASE_URL + "/api/base/product")).data;
     }
+
+    async getImage(imageName) {
+        return await axios.get(`${API_BASE_URL}/api/base/product/images`);
+    }
+
+    async getProduct(name) {
+        return await axios.get(`${API_BASE_URL}/api/base/product/${name.toLowerCase()}`);
+    };
 
     // Retail
     async addRetail(data) {
@@ -66,40 +88,42 @@ class Service {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
-    async allRetail(){
+
+    async allRetail() {
+        return await axios.get(API_BASE_URL + "/api/admin/retail-regions");
+    }
+
+    async allRetail() {
         const token = sessionStorage.getItem('token');
-        return await axios.get(API_BASE_URL+"/api/admin/retail-regions",{
-            headers: { Authorization: 'Bearer '+token}
+        return await axios.get(API_BASE_URL + "/api/admin/retail-regions", {
+            headers: { Authorization: 'Bearer ' + token }
         });
     }
 
     // Retail Product
-    async allRetailProduct(retailId){
+    async allRetailProduct(retailId) {
         const token = sessionStorage.getItem('token');
-        return await axios.get(API_BASE_URL+"/api/admin/retail-regions/"+retailId+"/retails",{
-            headers: { Authorization: 'Bearer '+token}
+        return await axios.get(API_BASE_URL + "/api/admin/retail-regions/" + retailId + "/retails", {
+            headers: { Authorization: 'Bearer ' + token }
         });
     }
-    async addRetailProduct(data){
+    async addRetailProduct(data) {
         const token = sessionStorage.getItem('token');
-        return await axios.post(API_BASE_URL+"/api/admin/retail-regions/product",data,{
-            headers: { Authorization: 'Bearer '+token}
+        return await axios.post(API_BASE_URL + "/api/admin/retail-regions/product", data, {
+            headers: { Authorization: 'Bearer ' + token }
         });
     }
-    async updateRetailProduct(data){
+    async updateRetailProduct(data) {
         const token = sessionStorage.getItem('token');
-        return await axios.put(API_BASE_URL+"/api/admin/retail-regions/product",data,{
-            headers: { Authorization: 'Bearer '+token}
+        return await axios.put(API_BASE_URL + "/api/admin/retail-regions/product", data, {
+            headers: { Authorization: 'Bearer ' + token }
         });
     }
-    async deleteRetailProduct(id){
+    async deleteRetailProduct(id) {
         const token = sessionStorage.getItem('token');
-        return await axios.delete(API_BASE_URL+"/api/admin/retail-regions/product/"+id,{
-            headers: { Authorization: 'Bearer '+token}
+        return await axios.delete(API_BASE_URL + "/api/admin/retail-regions/product/" + id, {
+            headers: { Authorization: 'Bearer ' + token }
         });
     }
-    
-    
-
 }
 export default new Service();

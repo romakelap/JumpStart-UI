@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const ProductDetailComp = () => {
   const location = useLocation();
-  const { data } = location.state || {};
+  const { data, image } = location.state || {};
 
   if (!data) {
     // Handle the case when data is not available
@@ -20,14 +20,14 @@ const ProductDetailComp = () => {
       <div className="boxfood">
         <div className="images">
           <div className="img-holder active">
-            <img src={banner} alt={name} />
+            <img src={image} alt={name} />
           </div>
         </div>
         <div className="basic-info">
           <h1>{name}</h1>
           <p className="text-yellow-500">${price}</p>
           <div className="options">
-            <Link className="btnorder" to="/paymentproduct">
+            <Link className="btnorder" to={`/paymentproduct?p=${name}`}>
               <button className="btnorder bg-green-500">Order</button>
             </Link>
           </div>

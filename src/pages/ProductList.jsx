@@ -10,8 +10,10 @@ import { useNavigate } from 'react-router-dom';
 import Service from '../service/Service';
 import { useState, useEffect } from 'react';
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
   const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [images, setImages] = useState({});
+
   useEffect(() => {
     // Fetch all products
     const fetchProducts = async () => {
@@ -24,10 +26,18 @@ const ProductList = () => {
     };
 
     fetchProducts();
+
+    // get image related to the product
+    Service.getImage()
+      .then(response => setImages(response.data))
+      .catch(error => console.error(error));
   }, []);
+
   const handleProductClick = (data) => {
-    navigate(`/detail`, { state: { data } });
+    const image = images[data.picture];
+    navigate(`/detail`, { state: { data, image } });
   };
+
   return (
     <>
       <Header />
@@ -61,7 +71,7 @@ const ProductList = () => {
       {products.map((product) => (
         <div key={product.id} data-aos='fade-up' data-aos-duration='2000' className="kotak">
           <div className="box-stock">
-            <img src={banner} alt="" />
+            <img src={images[product.picture]} alt="image" />
             <h4>{product.name}</h4>
             <p className="text-yellow-500">${product.price}</p>
             <button className="btn-food text-center" onClick={() => handleProductClick(product)}>More</button>
