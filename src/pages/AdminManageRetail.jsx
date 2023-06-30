@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import HeaderAdmin from '../components/TableAdmin/HeaderAdmin';
 import Logo from '../assets/img/header/logoJ.png';
 import '../style/form.css';
@@ -7,53 +7,53 @@ import Service from '../service/Service';
 import { useLocation } from 'react-router-dom';
 
 const AdminManageRetail = () => {
-//   
-const location = useLocation();
-const navigate = useNavigate();
-const { data } = location.state || {};
+  //   
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { data } = location.state || {};
 
 
-useEffect(() => {
-  if (data) {
-    // Set the form field values using the received data
-    document.getElementById('name').value = data.name || '';
-    document.getElementById('description').value = data.description || '';
-    document.getElementById('location').value = data.location || '';
-    document.getElementById('id').value = data.id || '';
-  }
-}, [data]);
+  useEffect(() => {
+    if (data) {
+      // Set the form field values using the received data
+      document.getElementById('name').value = data.name || '';
+      document.getElementById('description').value = data.description || '';
+      document.getElementById('location').value = data.location || '';
+      document.getElementById('id').value = data.id || '';
+    }
+  }, [data]);
 
-const handleFormSubmit = async (event) => {
-  event.preventDefault();
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-  const form = event.target;
-  const formData = new FormData(form);
+    const form = event.target;
+    const formData = new FormData(form);
 
-  const data = {};
-  for (let [name, value] of formData) {
-    data[name] = value;
-  }
-
-  try {
-    const retailDescription = {
-      id: data.id,
-      name: data.name,
-      location: data.location,
-    };
-
-    let response = null;
-    if (data.id !== '') {
-      response = await Service.updateRetail(retailDescription);
-    } else {
-      response = await Service.addRetail(retailDescription);
+    const data = {};
+    for (let [name, value] of formData) {
+      data[name] = value;
     }
 
-    navigate('/admin');
-    alert(response.data);
-  } catch (error) {
-    console.error(error);
-  }
-};
+    try {
+      const retailDescription = {
+        id: data.id,
+        name: data.name,
+        location: data.location,
+      };
+
+      let response = null;
+      if (data.id !== '') {
+        response = await Service.updateRetail(retailDescription);
+      } else {
+        response = await Service.addRetail(retailDescription);
+      }
+
+      navigate('/admin');
+      alert(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -64,7 +64,7 @@ const handleFormSubmit = async (event) => {
             <div className="forms-wrap">
               {/* FORM START */}
               <form className="sign-in-form" onSubmit={handleFormSubmit}>
-              <input type="number" style={{display:'none'}} id='id' name='id' />
+                <input type="number" style={{ display: 'none' }} id='id' name='id' />
                 <div className="logo">
                   <img src={Logo} />
                 </div>
@@ -77,7 +77,7 @@ const handleFormSubmit = async (event) => {
                   <div className="input-wrap">
                     <label className="label">Retail Name</label>
                     <input
-                    id='name'
+                      id='name'
                       type="text"
                       name="name"
                       placeholder="Retail Name"
@@ -85,7 +85,7 @@ const handleFormSubmit = async (event) => {
                       className="input-field"
                       autoComplete="off"
                       required
-                      
+
                     />
                   </div>
 
@@ -93,7 +93,7 @@ const handleFormSubmit = async (event) => {
                   <div className="input-wrap">
                     <label className="label">Description</label>
                     <input
-                    id='description'
+                      id='description'
                       type="text"
                       name="description"
                       placeholder="Description"
@@ -108,7 +108,7 @@ const handleFormSubmit = async (event) => {
                   <div className="input-wrap">
                     <label className="label">Location</label>
                     <input
-                    id='location'
+                      id='location'
                       type="text"
                       name="location"
                       placeholder="Location"
