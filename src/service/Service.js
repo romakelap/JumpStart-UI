@@ -58,7 +58,34 @@ class Service {
         });
     }
     async allRetail(){
-        return await axios.get(API_BASE_URL+"/api/admin/retail-regions");
+        const token = sessionStorage.getItem('token');
+        return await axios.get(API_BASE_URL+"/api/admin/retail-regions",{
+            headers: { Authorization: 'Bearer '+token}
+        });
+    }
+    async allRetailProduct(retailId){
+        const token = sessionStorage.getItem('token');
+        return await axios.get(API_BASE_URL+"/api/admin/retail-regions/"+retailId+"/retails",{
+            headers: { Authorization: 'Bearer '+token}
+        });
+    }
+    async addRetailProduct(data){
+        const token = sessionStorage.getItem('token');
+        return await axios.post(API_BASE_URL+"/api/admin/retail-regions/product",data,{
+            headers: { Authorization: 'Bearer '+token}
+        });
+    }
+    async updateRetailProduct(data){
+        const token = sessionStorage.getItem('token');
+        return await axios.put(API_BASE_URL+"/api/admin/retail-regions/product",data,{
+            headers: { Authorization: 'Bearer '+token}
+        });
+    }
+    async deleteRetailProduct(id){
+        const token = sessionStorage.getItem('token');
+        return await axios.delete(API_BASE_URL+"/api/admin/retail-regions/product/"+id,{
+            headers: { Authorization: 'Bearer '+token}
+        });
     }
 }
 export default new Service();
