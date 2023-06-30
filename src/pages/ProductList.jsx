@@ -8,10 +8,10 @@ import Cta from '../components/Cta';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import Service from '../service/Service';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     // Fetch all products
     const fetchProducts = async () => {
@@ -49,7 +49,7 @@ const ProductList = () => {
       <Cta />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default ProductList
+export default ProductList;

@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import HeaderAdmin from '../components/TableAdmin/HeaderAdmin';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Service from '../service/Service';
 import { useLocation } from 'react-router-dom';
 const AdminManageProduct = () => {
@@ -25,29 +25,29 @@ const AdminManageProduct = () => {
 
     const form = event.target;
     const formData = new FormData(form);
-    
+
     const data = {};
     for (let [name, value] of formData) {
       data[name] = value;
     }
 
     try {
-      let productDescription={
-        id:data.id,
-        name:data.name,
-        picture:data.picture.name,
+      let productDescription = {
+        id: data.id,
+        name: data.name,
+        picture: data.picture.name,
         price: data.price,
-        description:data.description
-      }
+        description: data.description
+      };
       // Call the addProduct method from the Service
       // console.log(productDescription)
-      let response=null;
-      if(data.id != ''){
+      let response = null;
+      if (data.id != '') {
         response = await Service.updateProduct(productDescription);
-      }else{
+      } else {
         response = await Service.addProduct(productDescription);
       }
-      navigate('/admin')
+      navigate('/admin');
       alert(response.data);
       // Reset the form or redirect to another page
     } catch (error) {
@@ -67,7 +67,7 @@ const AdminManageProduct = () => {
                   <h2>Manage Product</h2>
                 </div>
                 <div className="actual-form">
-                    <input type="number" style={{display:'none'}} id='id' name='id' />
+                  <input type="number" style={{ display: 'none' }} id='id' name='id' />
                   <div className="flex flex-wrap -mx-3 mb-6">
                     {/* PRODUCT NAME */}
                     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -115,7 +115,7 @@ const AdminManageProduct = () => {
                   <div className="input-wrap">
                     <label className="label">Price</label>
                     <input
-                    id='grid-price'
+                      id='grid-price'
                       type="float"
                       placeholder="2000"
                       minLength={4}
@@ -164,8 +164,8 @@ const AdminManageProduct = () => {
       </main>
     </>
 
-  )
-}
+  );
+};
 
 export default AdminManageProduct;
 
