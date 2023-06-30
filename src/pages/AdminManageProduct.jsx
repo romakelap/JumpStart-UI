@@ -52,16 +52,16 @@ const AdminManageProduct = () => {
         response = await Service.updateProduct(productDescription);
       } else {
         response = await Service.addProduct(productDescription);
-
-        // add product image
-        const image = new FormData();
-        image.append("image", postImage);
-        image.append("customName", productDescription.picture);
-
-        Service.addProductImage(image)
-          .then(response => console.log(response))
-          .catch(error => console.error(error));
       }
+
+      // add product image
+      const image = new FormData();
+      image.append("image", postImage);
+      image.append("customName", productDescription.picture);
+
+      Service.addProductImage(image)
+        .then(response => console.log(response))
+        .catch(error => console.error(error));
 
       navigate('/admin'); // Reset the form or redirect to another page
       alert(response.data);
