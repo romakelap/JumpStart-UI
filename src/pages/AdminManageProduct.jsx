@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import HeaderAdmin from '../components/TableAdmin/HeaderAdmin';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import Service from '../service/Service';
+import { useLocation } from 'react-router-dom';
 const AdminManageProduct = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { data } = location.state || {};
   const handleImageChange = (event) => {
     setSelectedImage(URL.createObjectURL(event.target.files[0]));
   };
+  useEffect(() => {
+    if (data) {
+      // Set the form field values using the received data
+      document.getElementById('grid-first-name').value = data.name || '';
+      document.getElementById('grid-price').value = data.price || '';
+      document.getElementById('grid-description').value = data.description || '';
+      document.getElementById('id').value = data.id || '';
+    }
+  }, [data]);
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -21,14 +33,22 @@ const AdminManageProduct = () => {
 
     try {
       let productDescription={
+        id:data.id,
         name:data.name,
         picture:data.picture.name,
-        price: 33.3,
+        price: data.price,
         description:data.description
       }
       // Call the addProduct method from the Service
-      const response = await Service.addProduct(productDescription);
-      alert(response);
+      // console.log(productDescription)
+      let response=null;
+      if(data.id != ''){
+        response = await Service.updateProduct(productDescription);
+      }else{
+        response = await Service.addProduct(productDescription);
+      }
+      navigate('/admin')
+      alert(response.data);
       // Reset the form or redirect to another page
     } catch (error) {
       console.error(error);
@@ -47,8 +67,8 @@ const AdminManageProduct = () => {
                   <h2>Manage Product</h2>
                 </div>
                 <div className="actual-form">
+                    <input type="number" style={{display:'none'}} id='id' name='id' />
                   <div className="flex flex-wrap -mx-3 mb-6">
-
                     {/* PRODUCT NAME */}
                     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
@@ -95,7 +115,8 @@ const AdminManageProduct = () => {
                   <div className="input-wrap">
                     <label className="label">Price</label>
                     <input
-                      type="number"
+                    id='grid-price'
+                      type="float"
                       placeholder="2000"
                       minLength={4}
                       name='price'
@@ -110,6 +131,7 @@ const AdminManageProduct = () => {
                     <label className="label">Description</label>
                     <input
                       type="text"
+                      id='grid-description'
                       placeholder="description"
                       minLength={4}
                       className="input-field"
