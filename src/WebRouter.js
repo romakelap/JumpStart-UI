@@ -17,7 +17,7 @@ const WebRouter = () => {
     <Routes>
         <Route path='/' element={<Landing/>}></Route>
         <Route path='/products' element={<ProductList/>}></Route>
-        <Route path='/detaill' element={<DetailProduct/>}></Route>
+        <Route path='/detail' element={<DetailProduct/>}></Route>
         <Route path='/paymentproduct' element={<PaymentProduct/>}></Route>
         <Route path='/admin' element={<AdminDashboard/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
