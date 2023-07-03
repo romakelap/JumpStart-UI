@@ -55,7 +55,6 @@ const TableRetailADD = () => {
         <thead>
           <tr>
             <th>Retail Name</th>
-            <th>Description</th>
             <th>Location</th>
             <th>Option</th>
           </tr>
@@ -64,7 +63,6 @@ const TableRetailADD = () => {
           {retailRegions.map((retailRegion) => (
             <tr key={retailRegion.id}>
               <td>{retailRegion.name}</td>
-              <td>{retailRegion.description}</td>
               <td>{retailRegion.location}</td>
               <td>
                 <button style={editButtonStyle} onClick={() => handleUpdateClick(retailRegion)}>Edit</button>

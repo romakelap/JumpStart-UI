@@ -83,35 +83,19 @@ const AdminManageProduct = () => {
                 </div>
                 <div className="actual-form">
                   <input type="number" style={{ display: 'none' }} id='id' name='id' />
-                  <div className="flex flex-wrap -mx-3 mb-6">
-                    {/* PRODUCT NAME */}
-                    <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
-                        Name
-                      </label>
-                      <input
-                        className="appearance-none block w-full border border-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="grid-first-name"
-                        name='name'
-                        type="text"
-                        placeholder="Product name"
-                        style={{ background: "#E8F0FE", fontSize: "0.75rem", border: "1px solid black" }}
-                      />
-                    </div>
-
-                    {/* STOCK PRODUCT */}
-                    <div className="w-full md:w-1/2 px-3">
-                      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
-                        Stock
-                      </label>
-                      <input
-                        className="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-last-name"
-                        type="number"
-                        placeholder="Stock"
-                        style={{ background: "#E8F0FE", fontSize: "0.75rem", border: "1px solid black" }}
-                      />
-                    </div>
+                  {/* PRODUCT NAME */}
+                  <div className="input-wrap">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
+                      Name
+                    </label>
+                    <input
+                      className="appearance-none block w-full border border-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-first-name"
+                      name='name'
+                      type="text"
+                      placeholder="Product name"
+                      style={{ background: "#E8F0FE", fontSize: "0.75rem", border: "1px solid black" }}
+                    />
                   </div>
 
                   {/* FILE UPLOAD */}
@@ -133,7 +117,7 @@ const AdminManageProduct = () => {
                       id='grid-price'
                       type="float"
                       placeholder="2000"
-                      minLength={4}
+                      minLength={2}
                       name='price'
                       className="input-field"
                       autoComplete="off"
@@ -161,7 +145,7 @@ const AdminManageProduct = () => {
                   <br />
                   <br />
                   <br />
-                  <input type="submit" value="Update" className="register" />
+                  <input type="submit" value="Submit" className="register" />
                   <Link to={"/admin"}>
                     <input type="submit" value="Cancel" className="cancel" />
                   </Link>

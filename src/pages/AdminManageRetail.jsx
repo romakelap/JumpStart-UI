@@ -17,7 +17,6 @@ const AdminManageRetail = () => {
     if (data) {
       // Set the form field values using the received data
       document.getElementById('name').value = data.name || '';
-      document.getElementById('description').value = data.description || '';
       document.getElementById('location').value = data.location || '';
       document.getElementById('id').value = data.id || '';
     }
@@ -89,21 +88,6 @@ const AdminManageRetail = () => {
                     />
                   </div>
 
-                  {/* Description */}
-                  <div className="input-wrap">
-                    <label className="label">Description</label>
-                    <input
-                      id='description'
-                      type="text"
-                      name="description"
-                      placeholder="Description"
-                      minLength={4}
-                      className="input-field"
-                      autoComplete="off"
-                      required
-                    />
-                  </div>
-
                   {/* Location */}
                   <div className="input-wrap">
                     <label className="label">Location</label>
@@ -118,7 +102,14 @@ const AdminManageRetail = () => {
                       required
                     />
                   </div>
-
+                  <>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                  </>
                   {/* Submit */}
                   <input type="submit" value="Submit" className="register" />
                   <Link to={"/admin"}>

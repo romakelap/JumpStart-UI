@@ -1,5 +1,6 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 export default function ThankYou() {
     return (
@@ -22,9 +23,11 @@ export default function ThankYou() {
                             <p className="text-gray-500 text-sm">Payment for products is successful</p>
                         </div>
                     </div>
+                    <Link to={"/products"}>
                     <div className="bg-blue-700 w-72 lg:w-5/6 m-auto mt-6 mb-6 p-2 hover:bg-indigo-500 rounded-2xl  text-white text-center shadow-xl shadow-bg-blue-700">
                         <button classs="lg:text-sm text-lg font-bold">Back</button>
                     </div>
+                    </Link>
                     <div className="text-center m-auto mt-6 w-full h-10">
                         
                     </div>
