@@ -1,6 +1,20 @@
-import React from 'react';
-
+import React,{useState,useEffect} from 'react';
+import Service from '../../service/Service';
 const TableTransaction = () => {
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    fetchTransactions();
+  }, []);
+
+  const fetchTransactions = async () => {
+    try {
+      const response = await Service.allTransaction();
+      setTransactions(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const styles = {
     padding: '0rem 0.5rem',
     marginLeft: '1rem'
@@ -28,25 +42,18 @@ const TableTransaction = () => {
             <th>Customer Name</th>
             <th>Product Name</th>
             <th>Address</th>
-            <th>Quantity</th>
-            <th>Message</th>
             <th>Status</th>
-            <th>Option</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Mei mei</td>
-            <td>Laptop</td>
-            <td>Bali</td>
-            <td>2</td>
-            <td>ok</td>
-            <td>PENDING</td>
-            <td>
-              <button style={editButtonStyle}>Edit</button>
-              <button style={deleteButtonStyle}>Remove</button>
-            </td>
-          </tr>
+          {transactions.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{transaction.customerName}</td>
+              <td>{transaction.retailRegionProduct.product.name}</td>
+              <td>{transaction.address}</td>
+              <td>{transaction.status}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

@@ -36,7 +36,30 @@ const AdminDashboard = () => {
         sessionStorage.removeItem('token');
         navigate("/");
     };
+    const [pendingTransactions, setPendingTransactions] = useState([]);
+
+    const handleApproveClick = async (id) => {
+        try {
+            const response = await Service.approveTransaction(id);
+            // Handle the response or perform any necessary actions
+            window.location.reload();
+            alert(response.data); // Log the response data
+          } catch (error) {
+            console.error(error);
+          }
+      };
+    
+    
+    const fetchPendingTransactions = async () => {
+        try {
+            const response = await Service.getPendingTransaction();
+            setPendingTransactions(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
     useEffect(() => {
+        fetchPendingTransactions();
 
         const sideMenu = document.querySelector("aside");
         const menuBtn = document.querySelector("#menu-btn");
@@ -216,41 +239,42 @@ const AdminDashboard = () => {
 
                         {/* =============POP UP START==================== */}
                         {isOpen && (
-
-
                             <div className="fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-black bg-opacity-50">
-                                <div className="p-8 bg-white rounded-md">
-                                    <div className="flex justify-between items-center mb-4">
-                                        <h3 className="text-lg font-bold">Order Details</h3>
-                                        <button className="text-gray-500" onClick={togglePopup}>
-                                            <BsX />
-                                        </button>
-                                    </div>
-                                    <h2 className="mb-4">List of orders from customer</h2>
-                                    <table className="w-full">
-                                        <thead>
-                                            <tr>
-                                                <th className="px-4 py-2">Customer Name</th>
-                                                <th className="px-4 py-2">Product Name</th>
-                                                <th className="px-4 py-2">Address</th>
-                                                <th className="px-4 py-2">Quantity</th>
-                                                <th className="px-4 py-2">Option</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td className="px-4 py-2">xiomi</td>
-                                                <td className="px-4 py-2">12</td>
-                                                <td className="px-4 py-2">$3</td>
-                                                <td className="px-4 py-2">$3</td>
-                                                <OutletDropdown />
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div className="p-8 bg-white rounded-md">
+                            <div className="flex justify-between items-center mb-4">
+                                <h3 className="text-lg font-bold">Order Details</h3>
+                                <button className="text-gray-500" onClick={togglePopup}>
+                                <BsX />
+                                </button>
+                            </div>
+                            <h2 className="mb-4">List of orders from customer</h2>
+                            <table className="w-full">
+                                <thead>
+                                <tr>
+                                    <th className="px-4 py-2">Customer Name</th>
+                                    <th className="px-4 py-2">Customer Address</th>
+                                    <th className="px-4 py-2">Product Name</th>
+                                    <th className="px-4 py-2">Address</th>
+                                    <th className="px-4 py-2">Option</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {pendingTransactions.map((transaction) => (
+                                    <tr key={transaction.id}>
+                                    <td className="px-4 py-2">{transaction.customerName}</td>
+                                    <td className="px-4 py-2">{transaction.address}</td>
+                                    <td className="px-4 py-2">{transaction.retailRegionProduct.product.name}</td>
+                                    <td className="px-4 py-2">{transaction.address}</td>
+                                    <td>
+                                        <button className='buttonadd' onClick={() => handleApproveClick(transaction.id)}>Approve</button>
+                                    </td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
+                            </div>
                             </div>
                             //  {/* =============POP UP END==================== */}
-
                         )}
                         
                     </div>
