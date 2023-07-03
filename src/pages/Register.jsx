@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import Service from "../service/Service";
 import { useNavigate } from "react-router-dom";
 const Register = () => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleRegister = async (event) => {
     event.preventDefault();
 
@@ -26,8 +26,8 @@ const navigate = useNavigate();
     try {
       // Call the register method from the service
       const response = await Service.register(data);
-      alert(response)
-      navigate("/login")
+      alert(response);
+      navigate("/login");
       // Handle the response here (e.g., show success message, redirect user, etc.)
     } catch (error) {
       // Handle errors here (e.g., show error message)

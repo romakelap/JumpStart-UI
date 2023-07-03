@@ -6,6 +6,8 @@ import { useLocation } from 'react-router-dom';
 
 const AdminManageProduct = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [images, setImages] = useState(undefined);
+  const [emptyImage, setEmptyImage] = useState(undefined);
   const [postImage, setPostImage] = useState(undefined);
 
   const location = useLocation();
@@ -18,6 +20,18 @@ const AdminManageProduct = () => {
   };
 
   useEffect(() => {
+
+
+
+    // get image related to the product
+    Service.getImage()
+      .then(response => {
+        setEmptyImage(data.picture); // set image
+        setImages(response.data);
+        setSelectedImage(response.data[data.picture]);
+      })
+      .catch(error => console.error(error));
+
     if (data) {
       // Set the form field values using the received data
       document.getElementById('grid-first-name').value = data.name || '';
@@ -25,6 +39,7 @@ const AdminManageProduct = () => {
       document.getElementById('grid-description').value = data.description || '';
       document.getElementById('id').value = data.id || '';
     }
+
   }, [data]);
 
   const handleFormSubmit = async (event) => {
@@ -38,10 +53,17 @@ const AdminManageProduct = () => {
     }
 
     try {
+      let picture;
+      if (postImage == undefined) {
+        picture = emptyImage;
+      } else {
+        picture = `${data.name}-${postImage.size}-${postImage.name}`;
+      }
+
       let productDescription = {
         id: data.id,
         name: data.name,
-        picture: `${data.name}-${postImage.size}-${postImage.name}`,
+        picture,
         price: data.price,
         description: data.description
       };

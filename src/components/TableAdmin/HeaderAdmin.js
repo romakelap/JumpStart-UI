@@ -8,7 +8,7 @@ const HeaderAdmin = () => {
   const [isActive, setIsActive] = useState(false);
 
   // Destructure header Data
-  const {btnText } = header;
+  const { btnText } = header;
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -18,26 +18,26 @@ const HeaderAdmin = () => {
 
   return (
     <header>
-    <div className="container mx-auto flex items-center justify-between p-4">
-      {/* Logo */}
-      <div className="flex items-center">
-      <Link to="/admin" className="">
-        <img
-          src={Logo}
-          alt="Logo"
-          className="h-8 w-28 mr-2"
-        />
-        </Link>
-        <span className="text-white font-semibold text-lg">Admin Dashboard</span>
-      </div>
+      <div className="container mx-auto flex items-center justify-between p-4">
+        {/* Logo */}
+        <div className="flex items-center">
+          <Link to="/admin" className="">
+            <img
+              src={Logo}
+              alt="Logo"
+              className="h-8 w-28 mr-2"
+            />
+          </Link>
+          <span className="text-white font-semibold text-lg">Admin Dashboard</span>
+        </div>
 
-      {/* Username */}
-      <div className="text-white">
-        <span className="mr-2 text-black">Welcome, Admin</span>
-        <Link to="/logout" className="">Logout</Link>
+        {/* Username */}
+        <div className="text-white">
+          <span className="mr-2 text-black">Welcome, Admin</span>
+          <Link to="/admin" className="">Back</Link>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
   );
 };
 
