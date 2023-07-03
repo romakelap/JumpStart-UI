@@ -18,7 +18,7 @@ const UpdateProfile = () => {
   const handleSaveProfile = async (event) => {
     try {
       const response = await Service.updateProfile(profileData);
-      navigate("/profile")
+      navigate("/profile");
     } catch (error) {
       console.error(error);
     }
@@ -80,7 +80,7 @@ const UpdateProfile = () => {
                     First Name
                   </label>
                   <input name="firstname"
-                    onChange={handleChange} value={profileData.firstname} className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" />
+                    onChange={handleChange} value={profileData.firstname} className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" required />
                 </div>
 
                 {/* LASTNAME */}
@@ -89,7 +89,7 @@ const UpdateProfile = () => {
                     Last Name
                   </label>
                   <input name="lastname"
-                    onChange={handleChange} value={profileData.lastname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" />
+                    onChange={handleChange} value={profileData.lastname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" required />
                 </div>
 
                 {/* AGE */}
@@ -98,7 +98,7 @@ const UpdateProfile = () => {
                     Age
                   </label>
                   <input name="age"
-                    onChange={handleChange} value={profileData.age} className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="number" placeholder="22" />
+                    onChange={handleChange} value={profileData.age} className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="number" placeholder="22" required />
                 </div>
 
                 {/* GENDER */}
@@ -126,7 +126,7 @@ const UpdateProfile = () => {
                     Address
                   </label>
                   <input name="address"
-                    onChange={handleChange} value={profileData.address} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="Bali Indonesia" />
+                    onChange={handleChange} value={profileData.address} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="Bali Indonesia" required />
                   <p className="text-gray-600 text-xs italic">Make sure the address is filled in correctly so that there are no mistakes during delivery</p>
                 </div>
               </div>
@@ -144,6 +144,6 @@ const UpdateProfile = () => {
     </>
 
   );
-}
+};
 
 export default UpdateProfile;

@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Service from '../../service/Service';
 const TableTransaction = () => {
   const [transactions, setTransactions] = useState([]);
@@ -32,6 +32,7 @@ const TableTransaction = () => {
     color: 'white',
     borderRadius: '0.25rem',
   };
+
   return (
     <div>
       <h2>List of Transaction</h2>
@@ -41,6 +42,7 @@ const TableTransaction = () => {
           <tr>
             <th>Customer Name</th>
             <th>Product Name</th>
+            <th>Retail Name</th>
             <th>Address</th>
             <th>Status</th>
           </tr>
@@ -50,6 +52,7 @@ const TableTransaction = () => {
             <tr key={transaction.id}>
               <td>{transaction.customerName}</td>
               <td>{transaction.retailRegionProduct.product.name}</td>
+              <td>{transaction.retailRegionProduct.retailRegion.name}</td>
               <td>{transaction.address}</td>
               <td>{transaction.status}</td>
             </tr>
@@ -57,7 +60,7 @@ const TableTransaction = () => {
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default TableTransaction
+export default TableTransaction;

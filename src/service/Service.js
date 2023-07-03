@@ -107,7 +107,7 @@ class Service {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
-    
+
 
     async addRetailProduct(data) {
         const token = sessionStorage.getItem('token');
@@ -141,25 +141,26 @@ class Service {
     }
 
     // Transaction
-    async addTransaction(data){
+    async addTransaction(data) {
         const token = sessionStorage.getItem('token');
-        return await axios.post(API_BASE_URL+"/api/base/transaction",data,{
-            headers: { Authorization: 'Bearer ' + token }
-        });
+        return await axios.post(API_BASE_URL + "/api/base/transaction", data);
     }
-    async getPendingTransaction(){
+
+    async getPendingTransaction() {
         const token = sessionStorage.getItem('token');
         return await axios.get(API_BASE_URL + "/api/admin/transaction/PENDING", {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
-    async approveTransaction(id){
+
+    async approveTransaction(id) {
         const token = sessionStorage.getItem('token');
-        return await axios.get(API_BASE_URL + "/api/admin/transaction/approve/"+id, {
+        return await axios.get(API_BASE_URL + "/api/admin/transaction/approve/" + id, {
             headers: { Authorization: 'Bearer ' + token }
         });
     }
-    async allTransaction(){
+
+    async allTransaction() {
         const token = sessionStorage.getItem('token');
         return await axios.get(API_BASE_URL + "/api/admin/transaction", {
             headers: { Authorization: 'Bearer ' + token }

@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '../assets/img/header/logoJ.png';
 import '../style/form.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Service from '../service/Service';
 import { useNavigate } from 'react-router-dom';
+import { GiConsoleController } from "react-icons/gi";
 
 const Login = () => {
     const navigate = useNavigate();
-    const handleLogin = async (event) =>{
+    const [credentialsInvalid, setCredentialsInvalid] = useState(false);
+
+    const handleLogin = async (event) => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
@@ -16,15 +19,15 @@ const Login = () => {
             email,
             password,
         };
-        try {
-            const response = await Service.login(data);
-            sessionStorage.setItem('token',response.token)
-            navigate("/products")
-        } catch (error) {
-            // Handle errors here (e.g., show error message)
-            console.error(error);
-        }
-    }
+        Service.login(data)
+            .then(response => {
+                setCredentialsInvalid(false);
+                sessionStorage.setItem('token', response.token);
+                navigate("/products");
+            }).catch(error => {
+                setCredentialsInvalid(true);
+            });
+    };
     return (
         <>
             <Header />
@@ -32,27 +35,28 @@ const Login = () => {
                 <div className="boxlogin">
                     <div className="inner-box">
                         <div className="forms-wrap">
-
-
                             {/* FORM */}
                             <form className="sign-in-form" onSubmit={handleLogin}>
+
                                 <div className="logo">
                                     <img src={Logo} alt="Marry meals" />
                                 </div>
                                 <div className="heading">
                                     <h2>Welcome Back</h2>
-                                    <h6>Not yet have account?</h6>
-                                    <a href="/register" className="toggle">Register</a>
+                                    <h6>Not yet have account? <a href="/register" className="toggle">Register</a></h6>
                                 </div>
                                 <div className="actual-form">
-
+                                    {
+                                        credentialsInvalid &&
+                                        <h1 className="text-sm bg-red-100 text-red-600 border-2 border-red-600 text-center p-2 rounded-lg">Email or Password incorrect</h1>
+                                    }
                                     {/* USERNAME */}
                                     <div className="input-wrap">
-                                        <label className="label">email</label>
+                                        <label className="label">Email</label>
                                         <input
-                                            type="text"
+                                            type="email"
                                             name="email"
-                                            placeholder="Email" minLength={4}
+                                            placeholder="Email"
                                             className="input-field" autoComplete="off" required />
                                     </div>
 
@@ -62,12 +66,12 @@ const Login = () => {
                                         <input
                                             type="password"
                                             name="password"
-                                            placeholder="Password" minLength={4} className="input-field" autoComplete="off" required />
+                                            placeholder="Password" className="input-field" autoComplete="off" required />
                                     </div>
 
                                     {/* SUBMIT */}
                                     <button type="submit" className="sign-btnlog">Login</button>
-                                    
+
                                     <p className="text">
                                         Forgotten your password or you login datails?
                                         <a href="/term">Get help</a> Term
@@ -92,7 +96,7 @@ const Login = () => {
             </main>
             <Footer />
         </>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
