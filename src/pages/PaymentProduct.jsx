@@ -1,22 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Logo from '../assets/img/header/logoJ.png';
-import product from '../assets/laptop.jpg';
 // import '../style/form.css';
-import { FaCcPaypal } from 'react-icons/fa';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { Link, useSearchParams } from "react-router-dom";
+import {useSearchParams } from "react-router-dom";
 import Service from "../service/Service";
-
-// TODO: 
-// 1. Remove message field [DONE]
-// 2. Automated Region
-// 3. Change username to name [DONE]
-// 4. Click buy then redirect to paypal (inform user that payment will be using paypal) [DONE]
-// 5. Change PayPal button to PayPal's logo [DONE]
-// 6. Fix navbar & footer issue [DONE]
-
+import { useNavigate } from 'react-router-dom';
 const PaymentProduct = () => {
+    const navigate = useNavigate();
     const [productName, setProductName] = useSearchParams();
     const [productDetail, setProductDetail] = useState(undefined);
     const [images, setImages] = useState(undefined);
@@ -54,55 +42,101 @@ const PaymentProduct = () => {
         const transactionalRequest = {
             customerName,
             address,
-            retailRegionProductId:parseInt(retailRegionProductId)
+            retailRegionProductId: parseInt(retailRegionProductId)
         };
 
-        Service.addTransaction(transactionalRequest).then(()=>{
+        Service.addTransaction(transactionalRequest).then(() => {
             Service.payment({ transactionalRequest, total })
-            .then(response => {
-                window.location.href = response.data;
-            })
-            .catch(error => console.error(error));
+                .then(response => {
+                    window.location.href = response.data;
+                })
+                .catch(error => console.error(error));
         });
     };
+    const cancel = () => {
+        navigate('/products');
+      };
 
     return (
         <>
             {
                 productDetail &&
                 <div>
-                    <Header />
-                    <main>
-                        <div className="grid grid-cols-2 gap-10 p-10 h-[50%]">
-                            {/* <img src={Logo} alt="jumpstart" /> */}
-                            <div>
-                                <img src={images && images[productDetail.picture]} alt="product image" className="h-auto rounded-2xl shadow-md" />
+                    <div className="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
+                        <a href="#" className="text-2xl font-bold text-gray-800">Payment</a>
+                        <div className="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
+                            <div className="relative">
+                                <ul className="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
+                                    <li className="flex items-center space-x-3 text-left sm:space-x-4">
+                                        <a className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-200 text-xs font-semibold text-emerald-700" href="#"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg></a>
+                                        <span className="font-semibold text-gray-900">Shop</span>
+                                    </li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                    <li className="flex items-center space-x-3 text-left sm:space-x-4">
+                                        <a className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-600 text-xs font-semibold text-white ring ring-gray-600 ring-offset-2" href="#">2</a>
+                                        <span className="font-semibold text-gray-900">Payment</span>
+                                    </li>
+                                </ul>
                             </div>
-                            <div>
-                                <div className="flex justify-between">
-                                    <div>
-                                        <h1 className="text-2xl font-bold">{productDetail.name}</h1>
-                                        <p>${total}</p>
+                        </div>
+                    </div>
+                    <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+                        <div className="px-4 pt-8">
+                            <p className="text-xl font-medium">Order Summary</p>
+                            <p className="text-gray-400">Check your items. And select a suitable shipping method.</p>
+                            <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+                                <div className="flex flex-col rounded-lg bg-white sm:flex-row">
+                                    <img className="m-2 h-24 w-28 rounded-md border object-cover object-center" src={images && images[productDetail.picture]}  alt="" />
+                                    <div className="flex w-full flex-col px-4 py-4">
+                                        <span className="font-semibold">{productDetail.name}</span>
+                                        <span className="float-right text-gray-400">{productDetail.description}</span>
+                                        <p className="text-lg font-bold">${total}</p>
                                     </div>
-                                    <Link to="" className="hover:underline">back to products</Link>
                                 </div>
-
-                                <div className="my-5 h-fit m-0 p-0">
-                                    <label htmlFor="name" className="flex flex-col mb-3">
-                                        Name
-                                        <input type="text" placeholder="Name" id="name" autoComplete="off"
-                                            className="border-2 px-4 py-2 outline-none rounded-lg focus:ring-2 focus:ring-offset-2 focus:ring-[#F9A826] transition"
-                                            onChange={(e) => setCustomerName(e.target.value)} />
+                            </div>
+                            <p className="mt-8 text-lg font-medium">Shipping Methods</p>
+                            <form className="mt-5 ml-[-5px]">
+                                <div className="relative">
+                                    <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" htmlFor="radio_1">
+                                        <img className="w-14 object-contain" src="https://static.vecteezy.com/system/resources/previews/009/469/637/original/paypal-payment-icon-editorial-logo-free-vector.jpg" alt="" />
+                                        <div className="ml-5">
+                                            <span className="mt-2 font-semibold">PayPal Delivery</span>
+                                            <p className="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
+                                        </div>
                                     </label>
+                                </div>
+                            </form>
+                        </div>
+                        <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+                            <p className="text-xl font-medium">Payment Details</p>
+                            <p className="text-gray-400">Complete your order by providing your payment details.</p>
 
-                                    <label htmlFor="address" className="flex flex-col mb-3">
-                                        Address
-                                        <input type="text" placeholder="Address" id="address" autoComplete="off"
-                                            className="border-2 px-4 py-2 outline-none rounded-lg focus:ring-2 focus:ring-offset-2 focus:ring-[#F9A826] transition"
-                                            onChange={(e) => setAddress(e.target.value)} />
-                                    </label>
-
-                                    <select className="w-full border-2 p-2 rounded-lg mb-3 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F9A826] transition" onChange={(e) => setRetailRegionProductId(e.target.value)}>
+                            {/* ====================FORM======================== */}
+                            <div className>
+                                <label htmlFor="name" className="mt-4 mb-2 block text-sm font-medium">Name</label>
+                                <div className="relative">
+                                    <input type="text" id="name" name="name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="your full name" onChange={(e) => setCustomerName(e.target.value)} />
+                                    <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <label htmlFor="address" className="mt-4 mb-2 block text-sm font-medium">Address</label>
+                                <div className="relative">
+                                    <input type="text" id="address" name="address" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Your detail address here" onChange={(e) => setAddress(e.target.value)}/>
+                                    <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <label className="mt-4 mb-2 block text-sm font-medium">Select Region</label>
+                                <div className="flex flex-col sm:flex-row">
+                                    <select className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" onChange={(e) => setRetailRegionProductId(e.target.value)}>
                                         <option value="">-- Select Region --</option>
                                         {
                                             locations && locations.map((v, i) => {
@@ -110,17 +144,27 @@ const PaymentProduct = () => {
                                             })
                                         }
                                     </select>
-
-                                    <button className="flex gap-1 items-center justify-center border-2 w-full py-2 rounded-lg border-transparent text-[#F9A826] font-semibold shadow active:shadow-none transition hover:bg-[#F9A826] hover:text-white group" onClick={payment}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-[#F9A826] group-hover:fill-white"><path d="M19.554 9.488c.121.563.106 1.246-.04 2.051-.582 2.978-2.477 4.466-5.683 4.466h-.442a.666.666 0 0 0-.444.166.72.72 0 0 0-.239.427l-.041.189-.553 3.479-.021.151a.706.706 0 0 1-.247.426.666.666 0 0 1-.447.166H8.874a.395.395 0 0 1-.331-.15.457.457 0 0 1-.09-.363c.061-.373.148-.938.267-1.689.117-.75.206-1.314.267-1.689s.15-.938.272-1.685c.121-.748.212-1.31.271-1.685.033-.248.179-.371.433-.371h1.316c.893.013 1.682-.057 2.375-.211 1.172-.262 2.134-.744 2.886-1.449.685-.637 1.203-1.462 1.56-2.473.162-.47.277-.917.352-1.338.006-.041.014-.066.025-.074.008-.011.022-.014.035-.011a.378.378 0 0 1 .062.035c.524.398.854.941.98 1.632zm-1.728-2.836c0 .717-.154 1.508-.465 2.374-.537 1.562-1.547 2.618-3.037 3.168-.758.269-1.602.408-2.535.425 0 .006-.301.007-.904.007l-.903-.007c-.672 0-1.067.32-1.187.964-.013.053-.298 1.83-.855 5.329-.008.066-.048.102-.121.102H4.854a.473.473 0 0 1-.369-.165.469.469 0 0 1-.115-.39L6.702 3.664a.784.784 0 0 1 .276-.483.785.785 0 0 1 .519-.19h6.014c.228 0 .555.044.979.131.428.084.801.194 1.123.321.718.274 1.266.688 1.645 1.237.379.552.568 1.207.568 1.972z"></path></svg>
-                                        <span>PayPal</span>
-                                    </button>
                                 </div>
-
+                                {/* Total */}
+                                <div className="mt-6 border-t border-b py-2">
+                                    <div className="flex items-center justify-between">
+                                        <p className="text-sm font-medium text-gray-900">Subtotal</p>
+                                        <p className="font-semibold text-gray-900">${total}</p>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <p className="text-sm font-medium text-gray-900">Shipping</p>
+                                        <p className="font-semibold text-green-300">Free</p>
+                                    </div>
+                                </div>
+                                <div className="mt-6 flex items-center justify-between">
+                                    <p className="text-sm font-medium text-gray-900">Total</p>
+                                    <p className="text-2xl font-semibold text-gray-900">${total}</p>
+                                </div>
                             </div>
+                            <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white" onClick={payment}>Pay</button>
+                            <button className="mt-4 mb-8 w-full rounded-md bg-red-500 px-6 py-3 font-medium text-white" onClick={() => cancel()}>Cancel</button>
                         </div>
-                    </main>
-                    <Footer />
+                    </div>
                 </div>
             }
         </>
