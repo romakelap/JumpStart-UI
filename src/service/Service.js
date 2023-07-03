@@ -23,12 +23,6 @@ class Service {
         return (await axios.post(API_BASE_URL + "/api/base/user/profile", data));
     }
 
-    async addProduct(data) {
-        return await axios.post(API_BASE_URL + "/api/admin/product", data, {
-            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
-        });
-    }
-
     async addProductImage(image) {
         return await axios.post(`${API_BASE_URL}/api/admin/product/image`, image, {
             headers: { 'Authorization': `Bearer ${token}`, "Content-Type": "multipart/form-data", }
@@ -147,6 +141,12 @@ class Service {
     }
 
     // Transaction
+    async addTransaction(data){
+        const token = sessionStorage.getItem('token');
+        return await axios.post(API_BASE_URL+"/api/base/transaction",data,{
+            headers: { Authorization: 'Bearer ' + token }
+        });
+    }
     async getPendingTransaction(){
         const token = sessionStorage.getItem('token');
         return await axios.get(API_BASE_URL + "/api/admin/transaction/PENDING", {
