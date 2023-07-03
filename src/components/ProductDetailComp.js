@@ -13,7 +13,7 @@ const ProductDetailComp = () => {
     return <div>No data available.</div>;
   }
 
-  const { name, price, description } = data;
+  const { name, price, description,slug } = data;
 
   return (
     <div className="detailfood">
@@ -27,7 +27,7 @@ const ProductDetailComp = () => {
           <h1>{name}</h1>
           <p className="text-yellow-500">${price}</p>
           <div className="options">
-            <Link className="btnorder" to={`/paymentproduct?p=${name}`}>
+            <Link className="btnorder" to={`/paymentproduct?p=${slug}`}>
               <button className="btnorder bg-green-500">Order</button>
             </Link>
           </div>

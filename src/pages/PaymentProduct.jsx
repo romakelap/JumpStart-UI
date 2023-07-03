@@ -54,14 +54,16 @@ const PaymentProduct = () => {
         const transactionalRequest = {
             customerName,
             address,
-            retailRegionProductId
+            retailRegionProductId:parseInt(retailRegionProductId)
         };
 
-        Service.payment({ transactionalRequest, total })
+        Service.addTransaction(transactionalRequest).then(()=>{
+            Service.payment({ transactionalRequest, total })
             .then(response => {
                 window.location.href = response.data;
             })
             .catch(error => console.error(error));
+        });
     };
 
     return (
@@ -104,7 +106,7 @@ const PaymentProduct = () => {
                                         <option value="">-- Select Region --</option>
                                         {
                                             locations && locations.map((v, i) => {
-                                                return <option key={i} value={v.retailRegion.id}>{v.retailRegion.location}</option>;
+                                                return <option key={i} value={v.id}>{v.retailRegion.location}</option>;
                                             })
                                         }
                                     </select>
