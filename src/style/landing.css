@@ -9,7 +9,7 @@
 }
 
 :root {
-    --PrimaryColor: rgb(255 114 53);
+    --PrimaryColor: rgb(250, 113, 55);
     --SecondaryColor: hsl(180, 17%, 95%);
     --colorOne: hsl(15, 74%, 76%);
     --colorTwo: hsl(28, 60%, 47%);
@@ -53,7 +53,7 @@ li {
 
 .btn {
     padding: .7rem 1.5rem;
-    background: var(--PrimaryColor);
+    background: rgb(250, 113, 55);
     border: none;
     outline: none;
     border-radius: 0.5rem;

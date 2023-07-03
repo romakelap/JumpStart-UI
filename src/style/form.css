@@ -3,7 +3,7 @@
 :root {
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness)*/
-    --PrimaryColor: #4a4a4a;
+    --PrimaryColor: rgb(250, 113, 55);
     --first-color: hsl(0, 0%, 48%);
     --second-color: hsl(0, 0%, 42%);
     --title-color: hsl(244, 12%, 12%);

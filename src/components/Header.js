@@ -4,8 +4,10 @@ import MobileNav from '../components/MobileNav';
 import Nav from '../components/Nav';
 import { header } from '../data';
 import { Link, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
   const [mobileNav, setMobileNav] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem('token')); // Tambahkan state untuk menentukan apakah pengguna sudah login
@@ -24,6 +26,9 @@ const Header = () => {
     // Hapus token dari local storage atau lakukan tindakan lain yang sesuai dengan logout
     sessionStorage.removeItem('token'); // Ubah 'token' dengan key penyimpanan token Anda
     setIsLoggedIn(false); // Set pengguna sebagai belum login
+  };
+  const handleProfile = () => {
+    navigate('/profile');
   };
 
   return (
@@ -44,14 +49,26 @@ const Header = () => {
         {/* Tampilkan tombol logout jika sudah login, atau tombol login jika belum */}
         {
           isLoggedIn &&
-          <button
-            className="btn btn-sm btn-red hidden lg:flex"
-            data-aos="fade-down"
-            data-aos-duration="1400"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
+          <>
+            <img
+              onClick={() => handleProfile()}
+              data-aos="fade-down"
+              data-aos-duration="1400"
+              src="https://cdn-icons-png.flaticon.com/512/4128/4128349.png"
+              alt="Profile"
+              className="w-10 h-10 rounded-full mr-[-100px]"
+            />
+
+            <button
+              style={{ backgroundColor: '#DC6767' }}
+              className="btn btn-sm bg-red-500 hidden lg:flex"
+              data-aos="fade-down"
+              data-aos-duration="1400"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </>
         }
 
         {/* Mobile nav humberger */}
