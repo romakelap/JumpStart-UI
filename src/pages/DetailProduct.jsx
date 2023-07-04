@@ -9,7 +9,6 @@ const DetailProduct = () => {
    <>
    <Header/>
    <ProductDetailComp/>
-   <Cta/>
    <Footer/>
    </>
   )
